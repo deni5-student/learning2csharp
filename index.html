@@ -1,21 +1,118 @@
 <!DOCTYPE html>
 <html lang="da">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <title>Mine c# noter</title>
-  </head>
-  <body>
-    <h1> Velkommen til mine c# noter</h1>
-    <p>Vælg et emne på listen for at læse mere.</p>
+    <title>C# Wiki med Direkte Redigering</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: system-ui, sans-serif; color: #333; background: #f9f9fb; line-height: 1.6; }
+        
+        .wiki-container {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            min-height: 100vh;
+        }
 
-    <!-- her er din liste med links til undersider -->
+        /* SIDEBAR MENU */
+        .sidebar { background-color: #ffffff; border-right: 1px solid #e3e3e8; padding: 30px 20px; }
+        .sidebar h2 { font-size: 1.1rem; text-transform: uppercase; color: #888; margin-bottom: 15px; }
+        .sidebar ul { list-style: none; margin-bottom: 30px; }
+        .sidebar li { margin-bottom: 8px; }
+        .sidebar a { color: #4a5568; text-decoration: none; display: block; padding: 6px 10px; border-radius: 6px; }
+        .sidebar a:hover { background-color: #f0f4f8; color: #0066cc; }
 
-    <ul> 
-      <li><a href="https://deni5-student.github.io/learning2csharp/variabler.html">Variabler i C#</a></li>
-      <li><a href="Conditions.html">Conditions i C#</a></li>
-      <li><a href="Loops.html">Loops i C#</a></li>
-      <li><a href="Collection.htmls">Collections i C#</a></li>
-      <li><a href="Methods.html">Methods i C#</a></li>
-    </ul>
-  </body>
+        /* INDHOLDSOMRÅDE */
+        .content { padding: 40px 60px; max-width: 900px; position: relative; }
+        
+        /* Når teksten kan redigeres, får den en pæn ramme, så man ved den er aktiv */
+        .editable-area[contenteditable="true"] {
+            outline: 2px dashed #0066cc;
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+        }
+
+        /* KNAPPER */
+        .button-group { margin-bottom: 20px; }
+        .btn {
+            padding: 8px 16px; border: none; border-radius: 6px; 
+            font-weight: bold; cursor: pointer; margin-right: 10px;
+        }
+        .btn-edit { background: #e3e3e8; color: #333; }
+        .btn-save { background: #22c55e; color: white; display: none; } /* Skjult indtil man editerer */
+    </style>
+</head>
+<body>
+
+    <div class="wiki-container">
+        
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <h2>🏠 Navigation</h2>
+            <ul><li><a href="index.html">Forside</a></li></ul>
+            <h2>📂 C# Vidensbase</h2>
+            <ul>
+                <li><a href="variabler.html">Variabler</a></li>
+                <li><a href="conditions.html">Conditions</a></li>
+                <li><a href="loops.html">Loops</a></li>
+            </ul>
+        </aside>
+
+        <!-- INDHOLD -->
+        <main class="content">
+            
+            <!-- Værktøjslinje med knapper -->
+            <div class="button-group">
+                <button id="editBtn" class="btn btn-edit" onclick="aktiverRedigering()">✏️ Rediger tekst</button>
+                <button id="saveBtn" class="btn btn-save" onclick="gemTekst()">💾 Gem ændringer</button>
+            </div>
+
+            <!-- Selve tekstområdet som kan låses op -->
+            <div id="wikiTekst" class="editable-area" contenteditable="false">
+                <h1>Variabler i C#</h1>
+                <p>Klik på "Rediger tekst" knappen herover for at ændre denne tekst direkte på siden.</p>
+                <p>Når du trykker gem, husker browseren dine noter, næste gang du åbner siden!</p>
+            </div>
+
+        </main>
+
+    </div>
+
+    <script>
+        // Giv hver HTML-side et unikt navn, så browseren kan kende forskel på dine noter
+        const sideNavn = "wiki_variabler"; 
+
+        // Indlæs gemt tekst, når siden åbner
+        window.onload = function() {
+            const gemtIndhold = localStorage.getItem(sideNavn);
+            if (gemtIndhold) {
+                document.getElementById('wikiTekst').innerHTML = gemtIndhold;
+            }
+        };
+
+        // Gør det muligt at skrive direkte på siden
+        function aktiverRedigering() {
+            const tekstOmraade = document.getElementById('wikiTekst');
+            tekstOmraade.setAttribute('contenteditable', 'true'); // Lås teksten op
+            tekstOmraade.focus(); // Sæt markøren i teksten
+
+            document.getElementById('editBtn').style.display = 'none'; // Skjul rediger-knap
+            document.getElementById('saveBtn').style.display = 'inline-block'; // Vis gem-knap
+        }
+
+        // Gem teksten i browserens hukommelse
+        function gemTekst() {
+            const tekstOmraade = document.getElementById('wikiTekst');
+            tekstOmraade.setAttribute('contenteditable', 'false'); // Lås teksten igen
+
+            // Gem alt HTML-indholdet i browserens LocalStorage
+            localStorage.setItem(sideNavn, tekstOmraade.innerHTML);
+
+            document.getElementById('editBtn').style.display = 'inline-block'; // Vis rediger-knap igen
+            document.getElementById('saveBtn').style.display = 'none'; // Skjul gem-knap
+            alert("Dine ændringer er gemt i browseren!");
+        }
+    </script>
+
+</body>
 </html>
