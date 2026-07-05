@@ -49,7 +49,28 @@
         .card { background: white; padding: 20px; border: 1px solid #e3e3e8; border-radius: 8px; text-decoration: none; color: inherit; }
         .card:hover { border-color: #0066cc; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .card h3 { color: #0066cc; margin-bottom: 5px; }
+
+		/* ========================================== */
+		/* KODEBLOK STYLING - lys boks som Visual Studio */
+		/* ========================================== */
+		pre {
+			background-color: #ffffff;      /* Lys/hvid baggrund som VS */
+			border: 1px solid #e3e3e8;
+			border-left: 4px solid #007acc; /* Flot blå C# streg i venstre side */
+			padding: 15px;
+			border-radius: 6px;
+			overflow-x: auto;
+			margin: 20px 0;
+		}
+		pre code {
+			font-family: 'Consolas', 'Courier New', Courier, monospace;
+			font-size: 0.95rem;
+			background: none;
+		}
     </style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
 </head>
 <body>
 
@@ -59,7 +80,7 @@
         <aside class="sidebar">
             <h2>🏠 Navigation</h2>
             <ul>
-                <li><a href="#" style="background: #f0f4f8; color: #0066cc; font-weight: bold;">Forside</a></li>
+                <li><a href="index.html" style="background: #f0f4f8; color: #0066cc; font-weight: bold;">Forside</a></li>
             </ul>
 
             <h2>📂 Vidensbase</h2>
@@ -78,12 +99,30 @@
 
         <!-- HØJRE SIDE: FORSIDENS INDHOLD -->
         <main class="content">
-            <h1>Velkommen til min Wiki</h1>
+            <h1>HTML Guides</h1>
             <p>Dette er din nye, centrale startside. Herfra kan du navigere rundt i alle dine emner og noter ved hjælp af sidebaren til venstre.</p>
 
             <div class="callout">
                 <strong>💡 Tip:</strong> Du kan tilføje nye menupunkter i HTML-koden under <code>&lt;aside&gt;</code>-tagget til venstre.
             </div>
+
+            <!-- ========================================== */ -->
+            <!-- Nyt: KODEBLOK INDSÆTTES HER                */ -->
+            <!-- ========================================== */ -->
+            <h2>Eksempel på C# Variabler</h2>
+            <pre><code class="language-csharp">using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Her opretter vi en variabel
+        string besked = "Hej Verden!";
+        int heltal = 42;
+
+        Console.WriteLine(besked);
+    }
+}</code></pre>
 
             <h2>Hurtige genveje</h2>
             <div class="grid-links">
@@ -99,6 +138,6 @@
         </main>
 
     </div>
-
+<script>hljs.highlightAll();</script>
 </body>
 </html>

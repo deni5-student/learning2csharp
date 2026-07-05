@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>C# Wiki</title>
+    <style>
+        /* CSS til layout og sidebar */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: system-ui, sans-serif; color: #333; background: #f9f9fb; line-height: 1.6; }
+        
+        .wiki-container {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR MENU */
+        .sidebar {
+            background-color: #ffffff;
+            border-right: 1px solid #e3e3e8;
+            padding: 30px 20px;
+        }
+        .sidebar h2 { font-size: 1.1rem; text-transform: uppercase; color: #888; margin-bottom: 15px; letter-spacing: 0.5px; }
+        .sidebar ul { list-style: none; margin-bottom: 30px; }
+        .sidebar li { margin-bottom: 8px; }
+        .sidebar a { color: #4a5568; text-decoration: none; font-size: 1rem; display: block; padding: 6px 10px; border-radius: 6px; }
+        .sidebar a:hover { background-color: #f0f4f8; color: #0066cc; }
+
+        /* INDHOLDSOMRÅDE */
+        .content {
+            padding: 40px 60px;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Skubber edit-knappen til bunden */
+        }
+        .content-body {
+            flex-grow: 1;
+        }
+        .content h1 { font-size: 2.5rem; margin-bottom: 15px; color: #111; }
+        .content p { margin-bottom: 20px; font-size: 1.1rem; color: #4a5568; }
+
+        /* EDIT KNAP DESIGN */
+        .edit-zone {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #e3e3e8;
+        }
+        .btn-edit {
+            display: inline-flex;
+            align-items: center;
+            background-color: #24292f; /* GitHub sort */
+            color: white;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .btn-edit:hover {
+            background-color: #57606a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wiki-container">
+        
+        <!-- SIDEBAR (Ens på alle sider) -->
+        <aside class="sidebar">
+            <h2>🏠 Navigation</h2>
+            <ul>
+                <li><a href="index.html" style="background: #f0f4f8; color: #0066cc; font-weight: bold;">Forside</a></li>
+            </ul>
+
+            <h2>📂 C# Vidensbase</h2>
+            <ul>
+                <li><a href="variabler.html">Variabler</a></li>
+                <li><a href="conditions.html">Conditions</a></li>
+                <li><a href="loops.html">Loops</a></li>
+                <li><a href="collection.html">Collections</a></li>
+                <li><a href="methods.html">Methods</a></li>
+            </ul>
+        </aside>
+
+        <!-- INDHOLD (Unikt for hver side) -->
+        <main class="content">
+            <div class="content-body">
+                <h1>Variabler i C#</h1>
+                <p>Her kan du skrive alle dine noter om variabler...</p>
+                <!-- Sæt dine C# noter ind her -->
+            </div>
+
+            <!-- SKIFT DETTE LINK UD PÅ HVER SIDE -->
+            <div class="edit-zone">
+                <a href="https://github.com" class="btn-edit" target="_blank">
+                    ✏️ Rediger denne side på GitHub
+                </a>
+            </div>
+        </main>
+
+    </div>
+
+</body>
+</html>
