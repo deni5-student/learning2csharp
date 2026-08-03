@@ -2,7 +2,7 @@
 <html lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>C# Wiki</title>
+    <title>CSS Styling</title>
     <style>
         /* CSS til layout og sidebar */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -60,6 +60,22 @@
         .btn-edit:hover {
             background-color: #57606a;
         }
+
+        /* KODEBLOK STYLING - lys boks som Visual Studio */
+        pre {
+            background-color: #ffffff;
+            border: 1px solid #e3e3e8;
+            border-left: 4px solid #007acc;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 15px 0 25px;
+        }
+        pre code {
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+        }
+        .content h2 { font-size: 1.4rem; color: #111; margin-top: 30px; margin-bottom: 5px; }
     </style>
 </head>
 <body>
@@ -92,9 +108,50 @@
         <!-- INDHOLD (Unikt for hver side) -->
         <main class="content">
             <div class="content-body">
-                <h1>Variabler i C#</h1>
-                <p>Her kan du skrive alle dine noter om variabler...</p>
-                <!-- Sæt dine C# noter ind her -->
+                <h1>CSS Styling</h1>
+                <p>Et overblik over de CSS-mønstre, wiki'en er bygget op af. Alle sider deler den samme grundstruktur, så det er nemt at holde designet ensartet.</p>
+
+                <h2>Grid-layout til sidebar og indhold</h2>
+                <p>Hele siden er delt op med CSS Grid i en fast 260px sidebar og et fleksibelt indholdsområde.</p>
+                <pre><code>.wiki-container {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 100vh;
+}</code></pre>
+
+                <h2>Sidebar-links</h2>
+                <p>Links i sidebaren skifter baggrund ved hover, og den aktive side markeres med en indbygget baggrundsfarve og fed skrift.</p>
+                <pre><code>.sidebar a { color: #4a5568; text-decoration: none; padding: 6px 10px; border-radius: 6px; }
+.sidebar a:hover { background-color: #f0f4f8; color: #0066cc; }</code></pre>
+
+                <h2>Info-boks (Callout)</h2>
+                <p>Bruges til tips og noter, med en farvet venstrekant der skiller den ud fra den almindelige tekst.</p>
+                <pre><code>.callout {
+    background: #eef2ff;
+    border-left: 4px solid #4f46e5;
+    padding: 15px 20px;
+    border-radius: 0 8px 8px 0;
+}</code></pre>
+
+                <h2>Kort (Cards) til genveje</h2>
+                <p>Bruges på forsiden til at vise genveje som klikbare kort i et grid, med en let skygge-effekt ved hover.</p>
+                <pre><code>.grid-links { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.card { background: white; border: 1px solid #e3e3e8; border-radius: 8px; }
+.card:hover { border-color: #0066cc; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }</code></pre>
+
+                <h2>Kodeblokke</h2>
+                <p>Bruges på f.eks. HTML Guides-siden til at vise kodeeksempler i en lys boks med en blå kant, ligesom i Visual Studio.</p>
+                <pre><code>pre {
+    background-color: #ffffff;
+    border: 1px solid #e3e3e8;
+    border-left: 4px solid #007acc;
+    border-radius: 6px;
+}</code></pre>
+
+                <h2>Blog-indlæg</h2>
+                <p>Bruges på Daglige Notater-siden til at vise indlæg som separate kort med en rund dato-mærkat øverst.</p>
+                <pre><code>.post { background: white; border: 1px solid #e3e3e8; border-radius: 8px; padding: 25px 30px; }
+.post-date { background: #eef2ff; color: #0066cc; border-radius: 999px; padding: 4px 10px; }</code></pre>
             </div>
 
             <!-- SKIFT DETTE LINK UD PÅ HVER SIDE -->
