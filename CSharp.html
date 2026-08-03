@@ -2,7 +2,7 @@
 <html lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>Min Wiki med Sidebar</title>
+    <title>C#</title>
     <style>
         /* Grundlæggende design og nulstilling */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -36,6 +36,7 @@
         }
         .content h1 { font-size: 2.5rem; margin-bottom: 15px; color: #111; }
         .content p { margin-bottom: 20px; font-size: 1.1rem; color: #4a5568; }
+        .content h2 { font-size: 1.4rem; color: #111; margin-top: 30px; margin-bottom: 10px; }
 
         /* En flot infoboks (Callout) */
         .callout {
@@ -52,7 +53,22 @@
         .card:hover { border-color: #0066cc; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .card h3 { color: #0066cc; margin-bottom: 5px; }
 
-        /* Kommando-liste */
+        /* KODEBLOK STYLING - lys boks som Visual Studio */
+        pre {
+            background-color: #ffffff;
+            border: 1px solid #e3e3e8;
+            border-left: 4px solid #007acc;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        pre code {
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+        }
+
+        /* Koncept-liste */
         .command-list { list-style: none; margin: 20px 0; }
         .command-list li {
             background: white;
@@ -88,8 +104,8 @@
             <ul>
                 <li><a href="HTML-Guides.html">HTML Guides</a></li>
                 <li><a href="CSS-Styling.html">CSS Styling</a></li>
-                <li><a href="CSharp.html">C#</a></li>
-                <li><a href="Ubuntu.html" style="background: #f0f4f8; color: #0066cc; font-weight: bold;">Ubuntu</a></li>
+                <li><a href="CSharp.html" style="background: #f0f4f8; color: #0066cc; font-weight: bold;">C#</a></li>
+                <li><a href="Ubuntu.html">Ubuntu</a></li>
                 <li><a href="Python.html">Python</a></li>
                 <li><a href="Windows.html">Windows</a></li>
                 <li><a href="WSL.html" class="sub-link">↳ WSL</a></li>
@@ -104,25 +120,79 @@
 
         <!-- HØJRE SIDE: FORSIDENS INDHOLD -->
         <main class="content">
-            <h1>Ubuntu</h1>
-            <p>En samling af 10 grundlæggende Linux-kommandoer, som alle bør kende, når de arbejder i terminalen på Ubuntu.</p>
+            <h1>C#</h1>
+            <p>Grundlæggende noter om C# — udgangspunktet for hele denne wiki. Siden bliver udvidet løbende med noter fra undervisningen.</p>
 
             <div class="callout">
-                <strong>💡 Tip:</strong> Skriv <code>man &lt;kommando&gt;</code> i terminalen for at læse den fulde dokumentation for enhver kommando.
+                <strong>💡 Tip:</strong> C# er stærkt og statisk typet — det betyder, at hver variabel har en fast type, som compileren tjekker allerede inden programmet køres.
             </div>
 
-            <h2>10 grundlæggende Linux-kommandoer</h2>
+            <h2>Hvad er C#?</h2>
+            <p>C# (udtales "C sharp") er et objektorienteret programmeringssprog udviklet af Microsoft. Det køres på .NET-platformen og bruges bredt til alt fra desktop-programmer og webudvikling til spiludvikling (fx i Unity).</p>
+
+            <h2>Grundlæggende syntaks</h2>
+            <pre><code>using System;
+
+class Program
+{
+    static void Main()
+    {
+        string navn = "Verden";
+        int alder = 20;
+
+        Console.WriteLine($"Hej {navn}, du er {alder} år gammel!");
+
+        if (alder >= 18)
+        {
+            Console.WriteLine("Du er myndig.");
+        }
+        else
+        {
+            Console.WriteLine("Du er ikke myndig endnu.");
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            Console.WriteLine($"Runde {i + 1}");
+        }
+    }
+}</code></pre>
+
+            <h2>Objektorienteret programmering (OOP)</h2>
+            <p>C# er bygget op omkring OOP-principper som klasser, objekter, indkapsling og arv. En klasse er en skabelon, man kan lave objekter (instanser) ud fra.</p>
+            <pre><code>class Person
+{
+    public string Navn;
+    public int Alder;
+
+    public Person(string navn, int alder)
+    {
+        Navn = navn;
+        Alder = alder;
+    }
+
+    public void SigHej()
+    {
+        Console.WriteLine($"Hej, jeg hedder {Navn}!");
+    }
+}
+
+// Brug af klassen:
+Person person1 = new Person("Dennis", 20);
+person1.SigHej();</code></pre>
+
+            <h2>Grundlæggende koncepter</h2>
             <ul class="command-list">
-                <li><code>ls</code> — Viser filer og mapper i den aktuelle mappe.</li>
-                <li><code>cd</code> — Skifter til en anden mappe (f.eks. <code>cd Dokumenter</code>).</li>
-                <li><code>pwd</code> — Viser stien til den mappe, du befinder dig i lige nu.</li>
-                <li><code>mkdir</code> — Opretter en ny mappe.</li>
-                <li><code>rm</code> — Sletter filer eller mapper (brug <code>-r</code> for mapper).</li>
-                <li><code>cp</code> — Kopierer filer eller mapper til et andet sted.</li>
-                <li><code>mv</code> — Flytter eller omdøber filer og mapper.</li>
-                <li><code>cat</code> — Viser indholdet af en fil i terminalen.</li>
-                <li><code>sudo</code> — Kører en kommando med administrator-rettigheder.</li>
-                <li><code>apt</code> — Installerer, opdaterer og fjerner programmer (f.eks. <code>sudo apt update</code>).</li>
+                <li><code>class</code> — Definerer en klasse (en skabelon for objekter).</li>
+                <li><code>static void Main()</code> — Programmets indgangspunkt, hvor koden starter med at køre.</li>
+                <li><code>Console.WriteLine()</code> — Skriver tekst ud i konsollen.</li>
+                <li><code>int</code>, <code>string</code>, <code>bool</code>, <code>double</code> — Nogle af de mest almindelige datatyper.</li>
+                <li><code>if / else</code> — Betingelser, der styrer programmets flow.</li>
+                <li><code>for</code>, <code>while</code>, <code>foreach</code> — Løkker til at gentage kode.</li>
+                <li><code>public / private</code> — Bestemmer hvem der kan tilgå en variabel eller metode (indkapsling).</li>
+                <li><code>Konstruktør</code> — En speciel metode, der kører, når et objekt oprettes med <code>new</code>.</li>
+                <li><code>Arv (inheritance)</code> — En klasse kan arve egenskaber og metoder fra en anden klasse.</li>
+                <li><code>// kommentar</code> — Alt efter <code>//</code> på en linje ignoreres af compileren.</li>
             </ul>
 
             <h2>Hurtige genveje</h2>
@@ -131,9 +201,9 @@
                     <h3>HTML Guides →</h3>
                     <p>Lær det grundlæggende om tags, elementer og struktur.</p>
                 </a>
-                <a href="Projekter.html" class="card">
-                    <h3>Projekter →</h3>
-                    <p>Oversigt over igangværende og afsluttede opgaver.</p>
+                <a href="Python.html" class="card">
+                    <h3>Python →</h3>
+                    <p>Introduktion til Python-syntaks og grundlæggende koncepter.</p>
                 </a>
             </div>
         </main>
