@@ -2,7 +2,7 @@
 <html lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>Python</title>
+    <title>WSL</title>
     <style>
         /* Grundlæggende design og nulstilling */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -68,7 +68,7 @@
             font-size: 0.95rem;
         }
 
-        /* Koncept-liste */
+        /* Kommando-liste */
         .command-list { list-style: none; margin: 20px 0; }
         .command-list li {
             background: white;
@@ -105,9 +105,9 @@
                 <li><a href="HTML-Guides.html">HTML Guides</a></li>
                 <li><a href="CSS-Styling.html">CSS Styling</a></li>
                 <li><a href="Ubuntu.html">Ubuntu</a></li>
-                <li><a href="Python.html" style="background: #f0f4f8; color: #0066cc; font-weight: bold;">Python</a></li>
+                <li><a href="Python.html">Python</a></li>
                 <li><a href="Windows.html">Windows</a></li>
-                <li><a href="WSL.html" class="sub-link">↳ WSL</a></li>
+                <li><a href="WSL.html" class="sub-link" style="background: #f0f4f8; color: #0066cc; font-weight: bold;">↳ WSL</a></li>
             </ul>
 
             <h2>👤 Personligt</h2>
@@ -119,49 +119,41 @@
 
         <!-- HØJRE SIDE: FORSIDENS INDHOLD -->
         <main class="content">
-            <h1>Python</h1>
-            <p>En introduktion til Python — et af de mest populære programmeringssprog, kendt for sin enkle og letlæselige syntaks.</p>
+            <h1>WSL (Windows Subsystem for Linux)</h1>
+            <p>Noter om WSL, lært på arbejdet — skal sættes op igen på skolens bærbare, da den ikke har det installeret endnu.</p>
 
             <div class="callout">
-                <strong>💡 Tip:</strong> Python bruger indrykning (mellemrum/tab) i stedet for krøllede parenteser <code>{ }</code> til at afgrænse kodeblokke — det er en del af sprogets syntaks, ikke bare formatering.
+                <strong>💡 Tip:</strong> WSL lader dig køre en rigtig Linux-terminal (f.eks. Ubuntu) direkte på Windows, uden en separat virtuel maskine eller dual-boot.
             </div>
 
-            <h2>Hvad er Python?</h2>
-            <p>Python er et fortolket (interpreted) og dynamisk typet sprog, der bruges bredt inden for alt fra webudvikling og automatisering til dataanalyse og maskinlæring. Det er ofte et godt sprog at starte med, fordi koden minder om almindeligt engelsk og kræver mindre "boilerplate" end sprog som C#.</p>
+            <h2>Hvad er WSL?</h2>
+            <p>Windows Subsystem for Linux er en funktion i Windows, der gør det muligt at køre Linux-distributioner (som Ubuntu) side om side med Windows. Det er praktisk til udvikling, fordi mange værktøjer (bash, git, Python, node osv.) fungerer bedre eller mere som forventet i et Linux-miljø.</p>
 
-            <h2>Eksempel på Python kode</h2>
-            <pre><code>navn = "Verden"
-alder = 20
+            <h2>Installation</h2>
+            <p>Åbn PowerShell eller Terminal <strong>som administrator</strong> og kør:</p>
+            <pre><code>wsl --install</code></pre>
+            <p>Dette installerer WSL samt en standard Linux-distribution (Ubuntu) og kræver typisk et genstart bagefter. Efter genstart åbner Ubuntu automatisk, og du bliver bedt om at oprette et brugernavn og en adgangskode til Linux-miljøet.</p>
 
-print(f"Hej {navn}, du er {alder} år gammel!")
-
-if alder >= 18:
-    print("Du er myndig.")
-else:
-    print("Du er ikke myndig endnu.")
-
-for i in range(3):
-    print(f"Runde {i + 1}")</code></pre>
-
-            <h2>Grundlæggende koncepter</h2>
+            <h2>Nyttige kommandoer</h2>
             <ul class="command-list">
-                <li><code>print()</code> — Skriver tekst eller værdier ud i konsollen.</li>
-                <li><code>variabel = værdi</code> — Opretter en variabel; ingen typedeklaration nødvendig.</li>
-                <li><code>input()</code> — Læser input fra brugeren i konsollen.</li>
-                <li><code>if / elif / else</code> — Betingelser, der styrer programmets flow.</li>
-                <li><code>for</code> og <code>while</code> — Løkker til at gentage kode.</li>
-                <li><code>list</code>, <code>dict</code>, <code>tuple</code> — Indbyggede datastrukturer til at gemme flere værdier.</li>
-                <li><code>def</code> — Bruges til at definere en funktion.</li>
-                <li><code>Indrykning</code> — Bruges i stedet for <code>{ }</code> til at markere kodeblokke.</li>
-                <li><code>import</code> — Henter funktionalitet fra andre moduler og biblioteker.</li>
-                <li><code># kommentar</code> — Alt efter <code>#</code> på en linje ignoreres af Python.</li>
+                <li><code>wsl --install</code> — Installerer WSL og standard-distributionen (Ubuntu).</li>
+                <li><code>wsl --list --online</code> — Viser hvilke Linux-distributioner der kan installeres.</li>
+                <li><code>wsl --install -d &lt;navn&gt;</code> — Installerer en specifik distribution, f.eks. Debian.</li>
+                <li><code>wsl --list --verbose</code> — Viser installerede distributioner og deres status/version.</li>
+                <li><code>wsl</code> — Åbner standard-distributionen i terminalen.</li>
+                <li><code>wsl --set-default &lt;navn&gt;</code> — Skifter hvilken distribution der er standard.</li>
+                <li><code>wsl --shutdown</code> — Lukker alle kørende WSL-instanser helt ned.</li>
+                <li><code>wsl --update</code> — Opdaterer WSL-kernen til den nyeste version.</li>
             </ul>
+
+            <h2>Fildeling mellem Windows og Linux</h2>
+            <p>Windows-drev er tilgængelige inde fra Linux under <code>/mnt/</code>, f.eks. er <code>C:\</code> tilgængelig som <code>/mnt/c/</code>. Omvendt kan Linux-filsystemet tilgås fra Windows Stifinder ved at skrive <code>\\wsl$</code> i adresselinjen.</p>
 
             <h2>Hurtige genveje</h2>
             <div class="grid-links">
-                <a href="HTML-Guides.html" class="card">
-                    <h3>HTML Guides →</h3>
-                    <p>Lær det grundlæggende om tags, elementer og struktur.</p>
+                <a href="Windows.html" class="card">
+                    <h3>Windows →</h3>
+                    <p>Tilbage til oversigten over Windows-noter.</p>
                 </a>
                 <a href="Ubuntu.html" class="card">
                     <h3>Ubuntu →</h3>

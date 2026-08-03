@@ -2,7 +2,7 @@
 <html lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>Min Wiki med Sidebar</title>
+    <title>Windows</title>
     <style>
         /* Grundlæggende design og nulstilling */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -36,6 +36,7 @@
         }
         .content h1 { font-size: 2.5rem; margin-bottom: 15px; color: #111; }
         .content p { margin-bottom: 20px; font-size: 1.1rem; color: #4a5568; }
+        .content h2 { font-size: 1.4rem; color: #111; margin-top: 30px; margin-bottom: 10px; }
 
         /* En flot infoboks (Callout) */
         .callout {
@@ -51,32 +52,12 @@
         .card { background: white; padding: 20px; border: 1px solid #e3e3e8; border-radius: 8px; text-decoration: none; color: inherit; }
         .card:hover { border-color: #0066cc; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .card h3 { color: #0066cc; margin-bottom: 5px; }
-
-		/* ========================================== */
-		/* KODEBLOK STYLING - lys boks som Visual Studio */
-		/* ========================================== */
-		pre {
-			background-color: #ffffff;      /* Lys/hvid baggrund som VS */
-			border: 1px solid #e3e3e8;
-			border-left: 4px solid #007acc; /* Flot blå C# streg i venstre side */
-			padding: 15px;
-			border-radius: 6px;
-			overflow-x: auto;
-			margin: 20px 0;
-		}
-		pre code {
-			font-family: 'Consolas', 'Courier New', Courier, monospace;
-			font-size: 0.95rem;
-			background: none;
-		}
     </style>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 </head>
 <body>
 
     <div class="wiki-container">
-        
+
         <!-- VENSTRE SIDE: SIDEBAR MENU -->
         <aside class="sidebar">
             <h2>🏠 Navigation</h2>
@@ -87,11 +68,11 @@
 
             <h2>📂 Vidensbase</h2>
             <ul>
-                <li><a href="HTML-Guides.html" style="background: #f0f4f8; color: #0066cc; font-weight: bold;" >HTML Guides</a></li>
+                <li><a href="HTML-Guides.html">HTML Guides</a></li>
                 <li><a href="CSS-Styling.html">CSS Styling</a></li>
                 <li><a href="Ubuntu.html">Ubuntu</a></li>
                 <li><a href="Python.html">Python</a></li>
-                <li><a href="Windows.html">Windows</a></li>
+                <li><a href="Windows.html" style="background: #f0f4f8; color: #0066cc; font-weight: bold;">Windows</a></li>
                 <li><a href="WSL.html" class="sub-link">↳ WSL</a></li>
             </ul>
 
@@ -104,44 +85,27 @@
 
         <!-- HØJRE SIDE: FORSIDENS INDHOLD -->
         <main class="content">
-            <h1>HTML Guides</h1>
-            <p>Dette er din nye, centrale startside. Herfra kan du navigere rundt i alle dine emner og noter ved hjælp af sidebaren til venstre.</p>
+            <h1>Windows</h1>
+            <p>Noter og guides til Windows som udviklingsmiljø — fra grundlæggende ting til værktøjer, der bygger bro til Linux.</p>
 
             <div class="callout">
-                <strong>💡 Tip:</strong> Du kan tilføje nye menupunkter i HTML-koden under <code>&lt;aside&gt;</code>-tagget til venstre.
+                <strong>💡 Tip:</strong> Se underemnet <a href="WSL.html">WSL</a> i sidebaren for noter om at køre Linux direkte på Windows.
             </div>
 
-            <!-- ========================================== */ -->
-            <!-- Nyt: KODEBLOK INDSÆTTES HER                */ -->
-            <!-- ========================================== */ -->
-            <h2>Eksempel på HTML Struktur</h2>
-            <pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang="da"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;Min side&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Hej Verden!&lt;/h1&gt;
-    &lt;p&gt;Dette er et afsnit med tekst.&lt;/p&gt;
-    &lt;a href="https://example.com"&gt;Et link&lt;/a&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-
-            <h2>Hurtige genveje</h2>
+            <h2>Under-emner</h2>
             <div class="grid-links">
-                <a href="HTML-Guides.html" class="card">
-                    <h3>HTML Guides →</h3>
-                    <p>Lær det grundlæggende om tags, elementer og struktur.</p>
+                <a href="WSL.html" class="card">
+                    <h3>WSL →</h3>
+                    <p>Sådan installeres og bruges Windows Subsystem for Linux.</p>
                 </a>
-                <a href="Projekter.html" class="card">
-                    <h3>Projekter →</h3>
-                    <p>Oversigt over igangværende og afsluttede opgaver.</p>
+                <a href="Ubuntu.html" class="card">
+                    <h3>Ubuntu →</h3>
+                    <p>10 grundlæggende Linux-kommandoer, alle bør kende.</p>
                 </a>
             </div>
         </main>
 
     </div>
-<script>hljs.highlightAll();</script>
+
 </body>
 </html>
