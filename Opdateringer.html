@@ -82,6 +82,28 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             margin: 15px 0;
             display: block;
+            cursor: zoom-in;
+        }
+
+        /* Lightbox: forstør billedet med mørk baggrund, uden JavaScript */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+        }
+        .lightbox-overlay:target {
+            display: flex;
+        }
+        .lightbox-overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
         }
     </style>
 </head>
@@ -130,7 +152,9 @@
                 <span class="post-date">3. august 2026</span>
                 <h2>Claude Code tilføjet som medhjælper på wiki'en</h2>
                 <p>I dag har jeg fået hjælp fra Claude Code til at rydde godt op i og udvide wiki'en. Kort opsummeret er der sket følgende:</p>
-                <img src="billeder/claude-code-opstart.png" alt="Terminal-skærmbillede af Claude Code, der starter op i projektmappen" class="screenshot">
+                <a href="#claude-code-opstart-billede">
+                    <img src="billeder/claude-code-opstart.png" alt="Terminal-skærmbillede af Claude Code, der starter op i projektmappen" class="screenshot">
+                </a>
                 <ul>
                     <li>Rettet en række sidebar-links, der pegede på forkerte filnavne, og fikset navigationen på CSS Styling-siden.</li>
                     <li>Fjernet Retningslinjer-siden, som ikke var relevant for formålet med wiki'en.</li>
@@ -141,6 +165,10 @@
                     <li>Omdøbt denne side fra "Daglige Notater" til "Opdateringer", da opdateringer ikke sker dagligt.</li>
                 </ul>
             </article>
+
+            <a href="#" id="claude-code-opstart-billede" class="lightbox-overlay">
+                <img src="billeder/claude-code-opstart.png" alt="Forstørret terminal-skærmbillede af Claude Code, der starter op i projektmappen">
+            </a>
 
             <h2>Hurtige genveje</h2>
             <div class="grid-links">

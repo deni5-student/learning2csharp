@@ -33,6 +33,15 @@ Tilføj denne CSS til sidens `<style>`-blok (samme mønster som `.callout`, `.co
 }
 ```
 
+## Klik-for-at-forstørre (lightbox)
+
+Billeder kan gøres klikbare, så de åbner i en forstørret visning med mørk baggrund — uden
+JavaScript, kun med et CSS `:target`-trick. Se `Opdateringer.html` for et fungerende eksempel.
+Mønsteret er: en `<a href="#unikt-id">` omkring miniaturebilledet, og et skjult
+`<a id="unikt-id" class="lightbox-overlay">` med det store billede placeret et sted på siden (fx
+lige efter det indhold, der bruger det). CSS'en for `.screenshot` og `.lightbox-overlay` skal være i
+sidens `<style>`-blok — kopiér den fra `Opdateringer.html`, hvis den ikke allerede findes på siden.
+
 ## Sådan tilføjes et nyt billede
 
 - Læg filen i denne mappe (lokalt, eller upload direkte via GitHub's webgrænseflade).
