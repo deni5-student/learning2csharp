@@ -49,6 +49,28 @@
         .card { background: white; padding: 20px; border: 1px solid #e3e3e8; border-radius: 8px; text-decoration: none; color: inherit; }
         .card:hover { border-color: #0066cc; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .card h3 { color: #0066cc; margin-bottom: 5px; }
+
+        /* Blog-indlæg: nyeste øverst, ældste nederst */
+        .post {
+            background: white;
+            border: 1px solid #e3e3e8;
+            border-radius: 8px;
+            padding: 25px 30px;
+            margin-bottom: 25px;
+        }
+        .post-date {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0066cc;
+            background: #eef2ff;
+            padding: 4px 10px;
+            border-radius: 999px;
+            margin-bottom: 10px;
+        }
+        .post h2 { font-size: 1.4rem; color: #111; margin-bottom: 10px; }
+        .post ul { margin: 10px 0 0 20px; color: #4a5568; }
+        .post li { margin-bottom: 6px; }
     </style>
 </head>
 <body>
@@ -80,12 +102,26 @@
 
         <!-- HØJRE SIDE: FORSIDENS INDHOLD -->
         <main class="content">
-            <h1>Velkommen til min Daglige-Notater.html</h1>
-            <p>Dette er din nye, centrale startside. Herfra kan du navigere rundt i alle dine emner og noter ved hjælp af sidebaren til venstre.</p>
+            <h1>Daglige Notater</h1>
+            <p>Min log over hvad der sker med wiki'en, nyeste indlæg øverst — scroll ned for at se historikken.</p>
 
             <div class="callout">
-                <strong>💡 Tip:</strong> Du kan tilføje nye menupunkter i HTML-koden under <code>&lt;aside&gt;</code>-tagget til venstre.
+                <strong>💡 Tip:</strong> Nye indlæg tilføjes altid øverst i listen, lige under denne boks.
             </div>
+
+            <article class="post">
+                <span class="post-date">3. august 2026</span>
+                <h2>Claude Code tilføjet som medhjælper på wiki'en</h2>
+                <p>I dag har jeg fået hjælp fra Claude Code til at rydde op i og udvide wiki'en. Kort opsummeret er der sket følgende:</p>
+                <ul>
+                    <li>Rettet et par sidebar-links, der pegede på forkerte filnavne.</li>
+                    <li>Fikset navigationen på CSS Styling-siden, som manglede sine links.</li>
+                    <li>Opdateret forsidens overskrift til "Velkommen til Learning 2 C Sharp".</li>
+                    <li>Byttet et forkert C#-kodeeksempel ud med et rigtigt HTML-eksempel på HTML Guides-siden.</li>
+                    <li>Tilføjet en ny side under Vidensbase om Ubuntu med 10 grundlæggende Linux-kommandoer.</li>
+                    <li>Ændret denne side til et blog-format, så nye opdateringer og noter kan tilføjes løbende.</li>
+                </ul>
+            </article>
 
             <h2>Hurtige genveje</h2>
             <div class="grid-links">
