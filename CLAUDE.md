@@ -100,6 +100,21 @@ locally via `file://` — that's expected, not a bug. Redeploying the backend af
 `dotnet publish -c Release -o ./publish` in `~/BesogsTaeller/`, zip the `publish/` contents, then drag
 the zip onto the app's Kudu Zip Deploy UI (Azure Portal → App Service → Development Tools → Advanced
 Tools → Go → Tools → Zip Push Deploy).
+
+The same backend also exposes `POST /kontakt`, used by `~/dnielsengl.github.io/contact.html`'s
+JS-driven contact form (replaced FormSubmit.co, a third-party service, on 2026-08-05). It accepts
+JSON `{ navn, tlfnr, email, besked }`, logs every submission (timestamp, IP from `X-Forwarded-For`,
+and the fields) to `kontakt-log.json` under the same persistent `/home/data/` directory — this is the
+user's spam/abuse audit trail, viewable via the Kudu file browser — then sends the message via
+Microsoft Graph `POST /users/kontakt@knits.gl/sendMail`, authenticated with an Entra ID app
+registration ("KNITS Kontaktformular", client-credentials flow, `Mail.Send` application permission
+with admin consent granted). The submission is always logged first and independently of whether the
+Graph send succeeds, so a transient Graph/auth failure never silently loses a message. Three secrets
+live in the App Service's Environment variables (not in code or this repo): `GraphTenantId`,
+`GraphClientId`, `GraphClientSecret`. `kontakt@knits.gl` itself is a real Exchange Online (Microsoft
+365) mailbox — DNS for `knits.gl` is on Cloudflare, and Microsoft's domain-verification/MX/SPF setup
+was done via the Cloudflare one-click authorization flow in the M365 admin center rather than manual
+DNS edits. `knits.gl` also has `privatlivspolitik.html` (privacy policy) covering this logging.
 ### Projekter.html
 The only page in this repo that uses JavaScript (a `<script>` block before `</body>`) — every other
 page is deliberately JS-free (see Architecture note above; index.html above is the other exception,
