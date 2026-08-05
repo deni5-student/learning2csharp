@@ -109,9 +109,13 @@ user's spam/abuse audit trail, viewable via the Kudu file browser — then sends
 Microsoft Graph `POST /users/kontakt@knits.gl/sendMail`, authenticated with an Entra ID app
 registration ("KNITS Kontaktformular", client-credentials flow, `Mail.Send` application permission
 with admin consent granted). The submission is always logged first and independently of whether the
-Graph send succeeds, so a transient Graph/auth failure never silently loses a message. Three secrets
+Graph send succeeds, so a transient Graph/auth failure never silently loses a message. Four secrets
 live in the App Service's Environment variables (not in code or this repo): `GraphTenantId`,
-`GraphClientId`, `GraphClientSecret`. `kontakt@knits.gl` itself is a real Exchange Online (Microsoft
+`GraphClientId`, `GraphClientSecret`, `TurnstileSecretKey`. The form is also protected by Cloudflare
+Turnstile (added 2026-08-05, widget site key `0x4AAAAAAEHZQmZBfYk5U_Qr` hardcoded in `contact.html`
+since it's not secret) — the backend verifies the widget's token against Cloudflare's `siteverify`
+API before doing anything else; failed/missing-token submissions are rejected with 400 and never
+reach the log or Graph mail send, since they're just bot noise, not real inquiries. `kontakt@knits.gl` itself is a real Exchange Online (Microsoft
 365) mailbox — DNS for `knits.gl` is on Cloudflare, and Microsoft's domain-verification/MX/SPF setup
 was done via the Cloudflare one-click authorization flow in the M365 admin center rather than manual
 DNS edits. `knits.gl` also has `privatlivspolitik.html` (privacy policy) covering this logging.
