@@ -112,7 +112,11 @@ which reopens it with a fresh game). When showing source code here, copy it fait
 simulation in a `.callout` note (e.g. the first entry, Gæt Et Tal, notes that the C# source's `"q"`
 branch is actually unreachable because `int.Parse` throws first, which the JS version silently fixes).
 Each project entry is a dated `.post`/`.post-date` card (same pattern as Opdateringer.html) so new
-projects added later can be told apart by when they were showcased.
+projects added later can be told apart by when they were showcased. Not every entry has a playable
+JS simulation — QuestWorld is a real standalone deployed game (`https://deni5-student.github.io/questworld-web/`,
+separate repo), so its entry is just a `.card`-styled link to go play it, moved here from `knits.gl`
+(`~/dnielsengl.github.io`) since it's a datamatiker-studies learning project, not a KNITS business
+offering.
 ### Opdateringer.html
 Blog-style changelog (renamed from "Daglige Notater" since updates don't happen daily). Newest post
 goes at the top, directly under the callout tip box; older posts stay below it. Keep entries short
