@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Fagord</title>
+    <style>
+        /* Grundlæggende design og nulstilling */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: system-ui, sans-serif; color: #333; background: #f9f9fb; line-height: 1.6; }
+
+        /* CSS Grid: Opdel skærmen i Sidebar (260px) og Indhold (resten) */
+        .wiki-container {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            min-height: 100vh;
+        }
+
+        /* 1. SIDEBAR DESIGN */
+        .sidebar {
+            background-color: #ffffff;
+            border-right: 1px solid #e3e3e8;
+            padding: 30px 20px;
+        }
+        .sidebar h2 { font-size: 1.1rem; text-transform: uppercase; color: #888; margin-bottom: 15px; letter-spacing: 0.5px; }
+        .sidebar ul { list-style: none; margin-bottom: 30px; }
+        .sidebar li { margin-bottom: 8px; }
+        .sidebar a { color: #4a5568; text-decoration: none; font-size: 1rem; display: block; padding: 6px 10px; border-radius: 6px; }
+        .sidebar a:hover { background-color: #f0f4f8; color: #0066cc; }
+        .sidebar a.sub-link { padding-left: 28px; font-size: 0.9rem; color: #718096; }
+
+        /* 2. INDHOLD DESIGN */
+        .content {
+            padding: 40px 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .content h1 { font-size: 2.5rem; margin-bottom: 15px; color: #111; }
+        .content p { margin-bottom: 20px; font-size: 1.1rem; color: #4a5568; }
+        .content h2 { font-size: 1.4rem; color: #111; margin-top: 30px; margin-bottom: 10px; }
+
+        /* En flot infoboks (Callout) */
+        .callout {
+            background: #eef2ff;
+            border-left: 4px solid #4f46e5;
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 25px 0;
+        }
+
+        /* Kort-genveje */
+        .grid-links { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
+        .card { background: white; padding: 20px; border: 1px solid #e3e3e8; border-radius: 8px; text-decoration: none; color: inherit; }
+        .card:hover { border-color: #0066cc; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .card h3 { color: #0066cc; margin-bottom: 5px; }
+
+        /* KODEBLOK STYLING - lys boks som Visual Studio */
+        pre {
+            background-color: #ffffff;
+            border: 1px solid #e3e3e8;
+            border-left: 4px solid #007acc;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 15px 0 20px;
+        }
+        pre code {
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+        }
+
+        /* Koncept-liste (genbrugt fra CSharp.html) */
+        .command-list { list-style: none; margin: 20px 0; }
+        .command-list li {
+            background: white;
+            border: 1px solid #e3e3e8;
+            border-left: 4px solid #007acc;
+            border-radius: 0 6px 6px 0;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+        }
+        .command-list code {
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            background: #f0f4f8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #007acc;
+            font-weight: bold;
+        }
+
+        /* NYT: Fagord-kort — ét begreb ad gangen */
+        .term {
+            background: white;
+            border: 1px solid #e3e3e8;
+            border-radius: 8px;
+            padding: 25px 30px;
+            margin-bottom: 25px;
+        }
+        .term-heading {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        .term-heading h2 { margin: 0; }
+        .term-en {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #718096;
+            font-style: italic;
+        }
+        .term p { font-size: 1rem; margin-bottom: 12px; }
+        .term p:last-of-type { margin-bottom: 0; }
+
+        /* Reference-boks til bogsider — bevidst tom, udfyldes manuelt */
+        .reference {
+            margin-top: 15px;
+            padding: 10px 14px;
+            background: #fffbeb;
+            border-left: 4px solid #d97706;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.9rem;
+            color: #78350f;
+        }
+        .reference strong { color: #92400e; }
+    </style>
+</head>
+<body>
+
+    <div class="wiki-container">
+
+        <!-- VENSTRE SIDE: SIDEBAR MENU -->
+        <aside class="sidebar">
+            <h2>🏠 Navigation</h2>
+            <ul>
+                <li><a href="index.html">Forside</a></li>
+                <li><a href="https://github.com/deni5-student/learning2csharp">Github side</a></li>
+            </ul>
+
+            <h2>📂 Vidensbase</h2>
+            <ul>
+                <li><a href="CSharp.html">C# Learning</a></li>
+                <li><a href="VisualStudio.html" class="sub-link">↳ Visual Studio</a></li>
+                <li><a href="Rider.html" class="sub-link">↳ JetBrains Rider</a></li>
+                <li><a href="Fagord.html" style="background: #f0f4f8; color: #0066cc; font-weight: bold;">Fagord</a></li>
+                <li><a href="HTML-Guides.html">HTML Guides</a></li>
+                <li><a href="CSS-Styling.html">CSS Styling</a></li>
+                <li><a href="Ubuntu.html">Ubuntu</a></li>
+                <li><a href="Python.html">Python</a></li>
+                <li><a href="Windows.html">Windows</a></li>
+                <li><a href="WSL.html" class="sub-link">↳ WSL</a></li>
+            </ul>
+
+            <h2>🎓 Skole</h2>
+            <ul>
+                <li><a href="Opdateringer.html">Blog</a></li>
+                <li><a href="Projekter.html">Projekter</a></li>
+            </ul>
+        </aside>
+
+        <!-- HØJRE SIDE: INDHOLD -->
+        <main class="content">
+            <h1>Fagord</h1>
+            <p>Et glossar over de vigtigste C#-fagudtryk — på dansk og engelsk. Fokus er ikke kun på, hvad en kodelinje gør, men på hvad du <em>faktisk har gjort</em>, når du skriver den. Det er dét, der skal kunne siges højt til en mundtlig eksamen.</p>
+
+            <div class="callout">
+                <strong>💡 Tip:</strong> Øv dig i at sige forklaringen højt, ikke kun læse den. Det er overgangen fra at "vide" til at "kunne forklare i realtid", der driller mest til eksamen.
+            </div>
+
+            <!-- KLASSE -->
+            <div class="term">
+                <div class="term-heading">
+                    <h2>Klasse</h2>
+                    <span class="term-en">(Class)</span>
+                </div>
+                <p>En klasse er en <strong>skabelon</strong> — en beskrivelse af, hvordan noget skal se ud og opføre sig, men den er ikke selve tingen. Man kan sammenligne det med en tegning af et hus: tegningen er ikke huset, men bestemmer, hvordan ethvert hus bygget efter den kommer til at se ud.</p>
+                <p>Når du skriver <code>class Person { ... }</code>, har du <strong>defineret en ny type</strong> i dit program — en opskrift på, hvilke data (fx navn, alder) og hvilken adfærd (fx metoder) et objekt af den type skal have.</p>
+                <pre><code>class Person
+{
+    public string Navn;
+    public int Alder;
+}</code></pre>
+                <div class="reference">
+                    📖 <strong>Kilde:</strong> C# 10.0 All-in-One For Dummies — kapitel ___, s. ___ <em>(udfyld selv)</em>
+                </div>
+            </div>
+
+            <!-- OBJEKT / INSTANS -->
+            <div class="term">
+                <div class="term-heading">
+                    <h2>Objekt / Instans</h2>
+                    <span class="term-en">(Object / Instance)</span>
+                </div>
+                <p>Hvis en klasse er tegningen af huset, er et <strong>objekt</strong> selve det byggede hus. Et objekt er en konkret "ting" i hukommelsen, lavet ud fra en klasses skabelon. Man kan lave mange forskellige objekter (huse) ud fra samme klasse (tegning).</p>
+                <p>Ordet <strong>instans</strong> bruges tit i stedet for "objekt" — de betyder stort set det samme: én konkret udgave af en klasse.</p>
+                <pre><code>Person person1 = new Person();
+Person person2 = new Person();
+// person1 og person2 er to forskellige objekter (instanser)
+// af samme klasse Person</code></pre>
+                <div class="reference">
+                    📖 <strong>Kilde:</strong> C# 10.0 All-in-One For Dummies — kapitel ___, s. ___ <em>(udfyld selv)</em>
+                </div>
+            </div>
+
+            <!-- KONSTRUKTØR -->
+            <div class="term">
+                <div class="term-heading">
+                    <h2>Konstruktør</h2>
+                    <span class="term-en">(Constructor)</span>
+                </div>
+                <p>En konstruktør er en speciel metode, der bliver kaldt <strong>automatisk</strong>, i det øjeblik et nyt objekt oprettes med nøgleordet <code>new</code>. Dens job er at sætte objektet klar til brug — fx give det en startværdi.</p>
+                <p><strong>Hvad sker der egentlig, når man skriver <code>Person person1 = new Person();</code>?</strong> Det er ikke bare "man opretter et objekt" — der sker tre ting på én gang:</p>
+                <ul class="command-list">
+                    <li><code>Person</code> (foran =) — Man <strong>definerer en variabel</strong>, som får typen Person.</li>
+                    <li><code>new Person()</code> — Man <strong>beder .NET om at afsætte plads i hukommelsen</strong> og oprette et nyt objekt af typen Person, ved at kalde dens konstruktør.</li>
+                    <li><code>=</code> — Man <strong>gemmer en reference</strong> til det nyoprettede objekt i variablen <code>person1</code> — variablen indeholder altså ikke selve objektet, men en "adresse" hen til det i hukommelsen.</li>
+                </ul>
+                <pre><code>class Person
+{
+    public string Navn;
+
+    // Dette er konstruktøren — kører automatisk ved "new"
+    public Person(string navn)
+    {
+        Navn = navn;
+    }
+}
+
+// Kalder konstruktøren og sender "Dennis" med som argument:
+Person person1 = new Person("Dennis");</code></pre>
+                <div class="reference">
+                    📖 <strong>Kilde:</strong> C# 10.0 All-in-One For Dummies — kapitel ___, s. ___ <em>(udfyld selv)</em>
+                </div>
+            </div>
+
+            <!-- ARRAY -->
+            <div class="term">
+                <div class="term-heading">
+                    <h2>Array</h2>
+                    <span class="term-en">(Array)</span>
+                </div>
+                <p>Et array er en <strong>samling af værdier af samme type</strong>, gemt i en fast, nummereret rækkefølge. Størrelsen er låst fast, når arrayet oprettes — man kan ikke bagefter tilføje eller fjerne pladser.</p>
+                <p>Hvert element har et <strong>index</strong> (en position), der starter ved 0 — ikke 1. Det første element har altså index 0, det andet index 1, og så videre.</p>
+                <pre><code>int[] tal = { 10, 20, 30 };
+// tal[0] er 10, tal[1] er 20, tal[2] er 30</code></pre>
+                <div class="reference">
+                    📖 <strong>Kilde:</strong> C# 10.0 All-in-One For Dummies — kapitel ___, s. ___ <em>(udfyld selv)</em>
+                </div>
+            </div>
+
+            <!-- METODE -->
+            <div class="term">
+                <div class="term-heading">
+                    <h2>Metode</h2>
+                    <span class="term-en">(Method)</span>
+                </div>
+                <p>En metode er en <strong>navngivet blok af kode</strong>, som udfører en bestemt opgave, og som kan kaldes (bruges) igen og igen uden at skulle skrives forfra hver gang. Man kan tænke på det som en handling, et objekt kan udføre.</p>
+                <pre><code>class Person
+{
+    public string Navn;
+
+    public void SigHej()
+    {
+        Console.WriteLine($"Hej, jeg hedder {Navn}!");
+    }
+}
+
+Person person1 = new Person();
+person1.SigHej(); // kalder metoden på objektet</code></pre>
+                <div class="reference">
+                    📖 <strong>Kilde:</strong> C# 10.0 All-in-One For Dummies — kapitel ___, s. ___ <em>(udfyld selv)</em>
+                </div>
+            </div>
+
+            <!-- VARIABEL -->
+            <div class="term">
+                <div class="term-heading">
+                    <h2>Variabel</h2>
+                    <span class="term-en">(Variable)</span>
+                </div>
+                <p>En variabel er et <strong>navngivet stykke plads i hukommelsen</strong>, som gemmer en værdi af en bestemt type. I C# skal variablens type angives (eller udledes med <code>var</code>), og typen kan ikke ændres bagefter — det er det, der menes med at C# er <strong>stærkt og statisk typet</strong>.</p>
+                <pre><code>int alder = 20;      // en int-variabel
+string navn = "Dennis"; // en string-variabel
+var by = "Odense";   // compileren udleder selv, at "by" er en string</code></pre>
+                <div class="reference">
+                    📖 <strong>Kilde:</strong> C# 10.0 All-in-One For Dummies — kapitel ___, s. ___ <em>(udfyld selv)</em>
+                </div>
+            </div>
+
+            <!-- INDKAPSLING -->
+            <div class="term">
+                <div class="term-heading">
+                    <h2>Indkapsling</h2>
+                    <span class="term-en">(Encapsulation)</span>
+                </div>
+                <p>Indkapsling betyder at <strong>skjule de indre detaljer</strong> af en klasse, og kun vise det udadtil, som andre dele af programmet faktisk har brug for. Det gøres med adgangsmodifikatorerne <code>public</code> (kan tilgås udefra) og <code>private</code> (kan kun tilgås inde i klassen selv).</p>
+                <p>Formålet er at beskytte data mod at blive ændret forkert udefra — man styrer, hvordan objektets data kan bruges, i stedet for at give fri adgang til alt.</p>
+                <pre><code>class Konto
+{
+    private double saldo; // kan IKKE tilgås udefra
+
+    public void Indsæt(double beløb)
+    {
+        saldo += beløb; // kun klassen selv kan ændre saldo direkte
+    }
+}</code></pre>
+                <div class="reference">
+                    📖 <strong>Kilde:</strong> C# 10.0 All-in-One For Dummies — kapitel ___, s. ___ <em>(udfyld selv)</em>
+                </div>
+            </div>
+
+            <!-- ARV -->
+            <div class="term">
+                <div class="term-heading">
+                    <h2>Arv</h2>
+                    <span class="term-en">(Inheritance)</span>
+                </div>
+                <p>Arv betyder, at en klasse kan <strong>overtage egenskaber og metoder</strong> fra en anden klasse, i stedet for at skulle skrive det hele forfra. Den klasse, der arver, kaldes en <strong>subklasse</strong>; den man arver fra, kaldes <strong>superklasse</strong> (eller basisklasse).</p>
+                <pre><code>class Dyr
+{
+    public void LavLyd()
+    {
+        Console.WriteLine("Dyret laver en lyd.");
+    }
+}
+
+// Hund arver fra Dyr, og får dermed adgang til LavLyd()
+class Hund : Dyr
+{
+}
+
+Hund minHund = new Hund();
+minHund.LavLyd(); // virker, selvom metoden ikke står i Hund-klassen</code></pre>
+                <div class="reference">
+                    📖 <strong>Kilde:</strong> C# 10.0 All-in-One For Dummies — kapitel ___, s. ___ <em>(udfyld selv)</em>
+                </div>
+            </div>
+
+            <!-- LØKKE -->
+            <div class="term">
+                <div class="term-heading">
+                    <h2>Løkke</h2>
+                    <span class="term-en">(Loop)</span>
+                </div>
+                <p>En løkke er en kodeblok, der <strong>gentages</strong>, indtil en bestemt betingelse ikke længere er sand. Bruges til at undgå at skrive den samme kode mange gange manuelt.</p>
+                <ul class="command-list">
+                    <li><code>for</code> — Bruges når man kender antallet af gentagelser på forhånd, og/eller har brug for et index.</li>
+                    <li><code>foreach</code> — Bruges til at gennemløbe alle elementer i en samling (fx et array), uden at skulle styre index selv.</li>
+                    <li><code>while</code> — Bruges når gentagelsen skal fortsætte, indtil en betingelse bliver falsk — uden at man nødvendigvis ved hvor mange gange på forhånd.</li>
+                </ul>
+                <div class="reference">
+                    📖 <strong>Kilde:</strong> C# 10.0 All-in-One For Dummies — kapitel ___, s. ___ <em>(udfyld selv)</em>
+                </div>
+            </div>
+
+            <!-- BETINGELSE -->
+            <div class="term">
+                <div class="term-heading">
+                    <h2>Betingelse</h2>
+                    <span class="term-en">(Conditional statement)</span>
+                </div>
+                <p>En betingelse styrer, hvilken kode der bliver kørt, afhængigt af om et udsagn er sandt (<code>true</code>) eller falsk (<code>false</code>). Det gør programmet i stand til at "træffe beslutninger" baseret på data.</p>
+                <pre><code>int alder = 20;
+
+if (alder >= 18)
+{
+    Console.WriteLine("Du er myndig.");
+}
+else
+{
+    Console.WriteLine("Du er ikke myndig endnu.");
+}</code></pre>
+                <div class="reference">
+                    📖 <strong>Kilde:</strong> C# 10.0 All-in-One For Dummies — kapitel ___, s. ___ <em>(udfyld selv)</em>
+                </div>
+            </div>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
