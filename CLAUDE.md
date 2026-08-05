@@ -1,25 +1,17 @@
 # CLAUDE.md
-
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 ## Overview
-
 This is a personal wiki for a datamatiker (computer science) student's coursework notes: a set of
 static, standalone HTML pages with no build step, no package manager, and no server-side code. It's
 published via GitHub Pages at https://deni5-student.github.io/learning2csharp/. Content and
 conversation with the user should be in Danish (`lang="da"`).
-
 ## Development
-
 There is no build/lint/test tooling — just edit the HTML files directly and open them in a browser
 (or refresh the GitHub Pages URL) to see changes. Changes are committed and pushed directly to `main`
 (no CI, no PR review) — GitHub Pages redeploys automatically within seconds of a push.
-
 ## Architecture
-
 Every top-level page is a fully self-contained HTML document with its own `<style>` block — there is
 no shared CSS file, JS module, or template system. All pages share this structure:
-
 - A `.wiki-container` CSS grid splitting the page into a fixed 260px `<aside class="sidebar">` and a
   centered, max-width `<main class="content">` area (`max-width: 1100px; margin: 0 auto;`).
 - The sidebar markup (Navigation / Vidensbase / Skole link groups) is duplicated verbatim across
@@ -34,25 +26,31 @@ no shared CSS file, JS module, or template system. All pages share this structur
   collapsible/JS-driven menu.
 - Reusable content-area patterns duplicated across pages as needed: `.callout` (tip box),
   `.grid-links`/`.card` (shortcut cards), `.command-list` (concept/command reference lists), `pre` /
-  `pre code` (VS-style code blocks), `.post`/`.post-date` (blog-style entries on Opdateringer.html).
-
+  `pre code` (VS-style code blocks), `.post`/`.post-date` (blog-style entries on Opdateringer.html),
+  `.term`/`.term-heading`/`.term-en` (glossary entry cards on Fagord.html, pairing a Danish term with
+  its English equivalent), `.reference` (amber citation box under a glossary entry, left intentionally
+  blank with a placeholder like "kapitel ___, s. ___" — the user fills in real page numbers from their
+  own physical textbook by hand; never invent a page/chapter number here).
 Because every page duplicates the same `<style>` block with minor variations, when changing shared
 visual style (sidebar colors, fonts, grid layout, etc.) expect to replicate the edit across all HTML
 files individually rather than editing one shared source.
-
 ### Current Vidensbase order
-
-`CSharp.html` (with `VisualStudio.html` and `Rider.html` as sub-links) → `HTML-Guides.html` →
+`CSharp.html` (with `VisualStudio.html` and `Rider.html` as sub-links) → `Fagord.html` → `HTML-Guides.html` →
 `CSS-Styling.html` → `Ubuntu.html` → `Python.html` → `Windows.html` (with `WSL.html` as a sub-link).
-
+### Fagord.html
+Danish/English glossary of C# terminology (Klasse/Class, Objekt/Object, Konstruktør/Constructor,
+Array, Metode/Method, Variabel/Variable, Indkapsling/Encapsulation, Arv/Inheritance, Løkke/Loop,
+Betingelse/Conditional). Exists because the user was marked down in a prior exam for not using proper
+terminology when defending their code orally, despite being able to read/understand code well. Each
+entry explains the underlying concept (not just what the line of code does — what the programmer
+has actually done), not just syntax, and pairs Danish and English terms so the user can practice
+saying them aloud. New entries should follow this same pattern and keep the `.reference` box blank
+for the user to fill in from their own textbook (currently: *C# 10.0 All-in-One For Dummies*).
 ### Opdateringer.html
-
 Blog-style changelog (renamed from "Daglige Notater" since updates don't happen daily). Newest post
 goes at the top, directly under the callout tip box; older posts stay below it. Keep entries short
 and factual — no references to what was learned at a job/employer (the user has asked this be kept
 generic/neutral, since the site is public).
-
 ### Images
-
 Screenshots and other images go in `billeder/` (see `billeder/README.md` for naming convention and
 the `.screenshot` CSS snippet to reuse). Not yet used on any page as of this writing.
