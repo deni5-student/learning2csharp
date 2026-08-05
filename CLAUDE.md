@@ -35,12 +35,12 @@ Because every page duplicates the same `<style>` block with minor variations, wh
 visual style (sidebar colors, fonts, grid layout, etc.) expect to replicate the edit across all HTML
 files individually rather than editing one shared source.
 ### Current Vidensbase order
-`CSharp.html` (with `fagord.html` as a sub-link) → `UML.html` → `UnifiedProcess.html` → `HTML-Guides.html` →
-`CSS-Styling.html` → `Ubuntu.html` (with `Rider.html`, `ShellLearning.html`, `EnvironmentConfiguration.html`,
-and `HurtigeGenveje.html` as sub-links) → `Python.html` → `Windows.html` (with `VisualStudio.html` and
-`WSL.html` as sub-links). IDE sub-links are grouped by the OS they're mainly used on (Rider under
-Ubuntu since it's cross-platform and commonly run on Linux; Visual Studio under Windows since it's
-Windows-specific) rather than under C# Learning.
+`CSharp.html` (with `fagord.html` and `Grundbegreber.html` as sub-links) → `UML.html` → `UnifiedProcess.html` →
+`HTML-Guides.html` → `CSS-Styling.html` → `Ubuntu.html` (with `Rider.html`, `ShellLearning.html`,
+`EnvironmentConfiguration.html`, and `HurtigeGenveje.html` as sub-links) → `Python.html` →
+`Windows.html` (with `VisualStudio.html` and `WSL.html` as sub-links). IDE sub-links are grouped by
+the OS they're mainly used on (Rider under Ubuntu since it's cross-platform and commonly run on
+Linux; Visual Studio under Windows since it's Windows-specific) rather than under C# Learning.
 ### UML.html and UnifiedProcess.html
 Notes for a school subject on UML and Unified Process (UP), which the user follows closely in their
 coursework. `UML.html` covers class diagrams (visibility symbols, association/aggregation/composition/
@@ -51,13 +51,22 @@ disciplines (Business Modeling, Requirements, Analysis & Design, Implementation,
 Configuration & Change Management, Project Management, Environment). The two pages cross-link each
 other via their "Hurtige genveje" cards, since UP's use-case-driven approach ties directly back to
 UML's use case diagrams.
-### Fagord.html
-Danish/English glossary of C# terminology (Klasse/Class, Objekt/Object, Konstruktør/Constructor,
-Array, Metode/Method, Variabel/Variable, Indkapsling/Encapsulation, Arv/Inheritance, Løkke/Loop,
-Betingelse/Conditional). Exists because the user was marked down in a prior exam for not using proper
-terminology when defending their code orally, despite being able to read/understand code well. Each
-entry explains the underlying concept (not just what the line of code does — what the programmer
-has actually done), not just syntax, and pairs Danish and English terms so the user can practice
+### Fagord.html and Grundbegreber.html
+Both are C# Learning sub-pages, and both draw on the same set of basics (variables, conditions,
+loops, methods, classes/objects, constructors, arrays, etc.) — they're intentionally not the same
+page, so don't try to merge them. `Fagord.html` is a Danish/English terminology glossary for oral
+exam prep (see below). `Grundbegreber.html` is a personal progress checklist (✅-prefixed `.checklist`
+items) of what the user has actually studied/worked on over a specific stretch of time — recreated
+after they lost the physical sticky note it was originally written on. When the user reports learning
+something new, check whether it belongs as a new ✅ entry on Grundbegreber.html.
+
+Fagord.html: Danish/English glossary of C# terminology (Klasse/Class, Objekt/Object, Konstruktør/
+Constructor, Array, Metode/Method, Variabel/Variable, Indkapsling/Encapsulation, Arv/Inheritance,
+Løkke/Loop, Betingelse/Conditional). Exists because the user was marked down in a prior exam for not
+using proper terminology when defending their code orally, despite being able to read/understand code
+well. Each entry explains the underlying concept (not just what the line of code does — what the
+programmer has actually done), not just syntax, and pairs Danish and English terms so the user can
+practice
 saying them aloud. New entries should follow this same pattern and keep the `.reference` box blank
 for the user to fill in from their own textbook (currently: *C# 10.0 All-in-One For Dummies*).
 ### Ubuntu.html and its sub-pages

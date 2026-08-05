@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Grundbegreber</title>
+    <style>
+        /* Grundlæggende design og nulstilling */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: system-ui, sans-serif; color: #333; background: #f9f9fb; line-height: 1.6; }
+
+        /* CSS Grid: Opdel skærmen i Sidebar (260px) og Indhold (resten) */
+        .wiki-container {
+            display: grid;
+            grid-template-columns: 260px 1fr;
+            min-height: 100vh;
+        }
+
+        /* 1. SIDEBAR DESIGN */
+        .sidebar {
+            background-color: #ffffff;
+            border-right: 1px solid #e3e3e8;
+            padding: 30px 20px;
+        }
+        .sidebar h2 { font-size: 1.1rem; text-transform: uppercase; color: #888; margin-bottom: 15px; letter-spacing: 0.5px; }
+        .sidebar ul { list-style: none; margin-bottom: 30px; }
+        .sidebar li { margin-bottom: 8px; }
+        .sidebar a { color: #4a5568; text-decoration: none; font-size: 1rem; display: block; padding: 6px 10px; border-radius: 6px; }
+        .sidebar a:hover { background-color: #f0f4f8; color: #0066cc; }
+        .sidebar a.sub-link { padding-left: 28px; font-size: 0.9rem; color: #718096; }
+
+        /* 2. INDHOLD DESIGN (FORSIDE) */
+        .content {
+            padding: 40px 60px;
+            max-width: 1100px; /* Sikrer at teksten ikke bliver for bred og svær at læse */
+            margin: 0 auto; /* Centrerer indholdet i den ledige plads */
+        }
+        .content h1 { font-size: 2.5rem; margin-bottom: 15px; color: #111; }
+        .content p { margin-bottom: 20px; font-size: 1.1rem; color: #4a5568; }
+        .content h2 { font-size: 1.4rem; color: #111; margin-top: 30px; margin-bottom: 10px; }
+
+        /* En flot infoboks (Callout) */
+        .callout {
+            background: #eef2ff;
+            border-left: 4px solid #4f46e5;
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 25px 0;
+        }
+
+        /* Kort-genveje på forsiden */
+        .grid-links { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
+        .card { background: white; padding: 20px; border: 1px solid #e3e3e8; border-radius: 8px; text-decoration: none; color: inherit; }
+        .card:hover { border-color: #0066cc; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .card h3 { color: #0066cc; margin-bottom: 5px; }
+
+        /* Tjekliste — grundbegreb + fagudtryks-beskrivelse */
+        .checklist { list-style: none; margin: 20px 0; }
+        .checklist li {
+            background: white;
+            border: 1px solid #e3e3e8;
+            border-left: 4px solid #16a34a;
+            border-radius: 0 6px 6px 0;
+            padding: 14px 18px;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .checklist .status { font-size: 1.1rem; line-height: 1.5; }
+        .checklist strong { color: #111; }
+        .checklist code {
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            background: #f0f4f8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #007acc;
+            font-weight: bold;
+        }
+
+        /* Reference-boks til bogsider — bevidst tom, udfyldes manuelt */
+        .reference {
+            margin-top: 15px;
+            padding: 10px 14px;
+            background: #fffbeb;
+            border-left: 4px solid #d97706;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.9rem;
+            color: #78350f;
+        }
+        .reference strong { color: #92400e; }
+    </style>
+</head>
+<body>
+
+    <div class="wiki-container">
+
+        <!-- VENSTRE SIDE: SIDEBAR MENU -->
+        <aside class="sidebar">
+            <h2>🏠 Navigation</h2>
+            <ul>
+                <li><a href="index.html">Forside</a></li>
+                <li><a href="https://github.com/deni5-student/learning2csharp">Github side</a></li>
+            </ul>
+
+            <h2>📂 Vidensbase</h2>
+            <ul>
+                <li><a href="CSharp.html">C# Learning</a></li>
+                <li><a href="fagord.html" class="sub-link">↳ Fagord</a></li>
+                <li><a href="Grundbegreber.html" class="sub-link" style="background: #f0f4f8; color: #0066cc; font-weight: bold;">↳ Grundbegreber</a></li>
+                <li><a href="UML.html">UML</a></li>
+                <li><a href="UnifiedProcess.html">Unified Process</a></li>
+                <li><a href="HTML-Guides.html">HTML Guides</a></li>
+                <li><a href="CSS-Styling.html">CSS Styling</a></li>
+                <li><a href="Ubuntu.html">Ubuntu</a></li>
+                <li><a href="Rider.html" class="sub-link">↳ JetBrains Rider</a></li>
+                <li><a href="ShellLearning.html" class="sub-link">↳ Shell Learning</a></li>
+                <li><a href="EnvironmentConfiguration.html" class="sub-link">↳ Environment Configuration</a></li>
+                <li><a href="HurtigeGenveje.html" class="sub-link">↳ Hurtige Genveje</a></li>
+                <li><a href="Python.html">Python</a></li>
+                <li><a href="Windows.html">Windows</a></li>
+                <li><a href="VisualStudio.html" class="sub-link">↳ Visual Studio</a></li>
+                <li><a href="WSL.html" class="sub-link">↳ WSL</a></li>
+            </ul>
+
+            <h2>🎓 Skole</h2>
+            <ul>
+                <li><a href="Opdateringer.html">Blog</a></li>
+                <li><a href="Projekter.html">Projekter</a></li>
+            </ul>
+        </aside>
+
+        <!-- HØJRE SIDE: FORSIDENS INDHOLD -->
+        <main class="content">
+            <h1>Grundbegreber</h1>
+            <p>Tjekliste over de grundlæggende C#-emner, jeg har arbejdet med de seneste 3 uger — genskabt efter jeg mistede den gule seddel, det hele startede på. Hvert emne har en kort beskrivelse i fagudtryk af, hvad det egentlig dækker.</p>
+
+            <div class="callout">
+                <strong>💡 Tip:</strong> ✅ betyder emnet er gennemgået og arbejdet med. Nye emner tilføjes med ⬜, indtil de er dækket.
+            </div>
+
+            <h2>Basale C#-emner</h2>
+            <ul class="checklist">
+                <li>
+                    <span class="status">✅</span>
+                    <span><strong>Variabler</strong> — Navngivet plads i hukommelsen til at gemme en værdi af en bestemt, fast type (<code>int</code>, <code>string</code>, <code>bool</code> osv.). C# er stærkt og statisk typet, så typen er låst efter deklaration.</span>
+                </li>
+                <li>
+                    <span class="status">✅</span>
+                    <span><strong>Betingelser</strong> (<code>if</code> / <code>else</code> / <code>else if</code>) — Styrer hvilken kodeblok der eksekveres, afhængigt af om et boolsk udtryk evaluerer til <code>true</code> eller <code>false</code>.</span>
+                </li>
+                <li>
+                    <span class="status">✅</span>
+                    <span><strong>Løkker</strong> (<code>for</code>, <code>while</code>, <code>foreach</code>) — Gentager en kodeblok, indtil en betingelse ikke længere er opfyldt, i stedet for at skrive samme kode flere gange manuelt.</span>
+                </li>
+                <li>
+                    <span class="status">✅</span>
+                    <span><strong>Metoder</strong> — Navngiven, genbrugelig kodeblok, der udfører en bestemt opgave og kan tage parametre ind og/eller returnere en værdi.</span>
+                </li>
+                <li>
+                    <span class="status">✅</span>
+                    <span><strong>Datatyper</strong> — Bestemmer hvilken slags værdi en variabel kan indeholde, og hvor meget plads den fylder i hukommelsen (fx <code>int</code> til heltal, <code>double</code> til decimaltal, <code>bool</code> til sandt/falsk).</span>
+                </li>
+                <li>
+                    <span class="status">✅</span>
+                    <span><strong>Arrays</strong> — Samling af værdier af samme type, gemt i en fast, nummereret rækkefølge med index startende ved 0.</span>
+                </li>
+                <li>
+                    <span class="status">✅</span>
+                    <span><strong>Klasser og objekter</strong> — En klasse er skabelonen (opskriften), et objekt er den konkrete instans bygget ud fra den skabelon.</span>
+                </li>
+                <li>
+                    <span class="status">✅</span>
+                    <span><strong>Konstruktører</strong> — Speciel metode, der køres automatisk, når et objekt oprettes med <code>new</code>, og som typisk sætter objektets startværdier.</span>
+                </li>
+                <li>
+                    <span class="status">✅</span>
+                    <span><strong>Kommentarer</strong> (<code>//</code>, <code>/* */</code>) — Tekst i koden, som compileren ignorerer; bruges til at forklare hensigten bag koden for andre (eller sig selv).</span>
+                </li>
+                <li>
+                    <span class="status">✅</span>
+                    <span><strong>Strings</strong> — Datatype til tekst; i C# er strings <em>immutable</em> (uforanderlige) — enhver "ændring" af en string opretter faktisk en ny string i hukommelsen.</span>
+                </li>
+                <li>
+                    <span class="status">✅</span>
+                    <span><strong>Try/catch (fejlhåndtering)</strong> — Lader programmet fange og håndtere en runtime-fejl (exception) uden at hele programmet crasher.</span>
+                </li>
+                <li>
+                    <span class="status">✅</span>
+                    <span><strong>Collections</strong> (<code>List&lt;T&gt;</code>) — Ligesom et array, men kan vokse og krympe dynamisk i størrelse, i modsætning til et almindeligt array med fast længde.</span>
+                </li>
+            </ul>
+            <div class="reference">
+                📖 <strong>Kilde:</strong> C# 10.0 All-in-One For Dummies — kapitel ___, s. ___ <em>(udfyld selv)</em>
+            </div>
+
+            <h2>Hurtige genveje</h2>
+            <div class="grid-links">
+                <a href="CSharp.html" class="card">
+                    <h3>C# Learning →</h3>
+                    <p>Tilbage til oversigten med syntaks og OOP-eksempler.</p>
+                </a>
+                <a href="fagord.html" class="card">
+                    <h3>Fagord →</h3>
+                    <p>Dansk/engelsk fagordbog til at øve mundtlig forklaring.</p>
+                </a>
+            </div>
+        </main>
+
+    </div>
+
+</body>
+</html>
