@@ -83,13 +83,19 @@ All four of these pages use the same blank `.reference` citation pattern as Fago
 (copyright); write original summaries/notes instead, and leave the chapter/page in the `.reference`
 box for the user to fill in by hand.
 ### index.html and the BesogsTaeller Azure backend
-`index.html` fetches a visit count from `https://deni5-f8f9fzcefnf5babj.denmarkeast-01.azurewebsites.net/besog`
-(displayed at the bottom of the page as "Besøg #N") — this is the user's own ASP.NET Core Minimal API
-app (source at `~/BesogsTaeller/Program.cs` on this machine, not in this repo), deployed to a free F1
-Azure App Service, not a third-party service. The endpoint increments a counter persisted to a text
-file under the App Service's `/home/data/` (the one path that survives redeploys — writing inside
-`wwwroot` is unsafe since deploys can wipe/replace it). The backend only allows CORS from
-`https://deni5-student.github.io` specifically, so the counter will show blank when testing `index.html`
+`index.html` fetches visit stats from `https://deni5-f8f9fzcefnf5babj.denmarkeast-01.azurewebsites.net/besog`
+(displayed at the bottom of the page, e.g. "8 besøg i alt siden 5. august 2026 · 8 i denne måned") —
+this is the user's own ASP.NET Core Minimal API app (source at `~/BesogsTaeller/Program.cs` on this
+machine, not in this repo), deployed to a free F1 Azure App Service, not a third-party service. The
+endpoint increments a counter and returns JSON `{ total, startDato, perMåned }` (camelCase — ASP.NET
+Core's default `System.Text.Json` naming policy for minimal APIs), persisted to a JSON file under the
+App Service's `/home/data/` (the one path that survives redeploys — writing inside `wwwroot` is unsafe
+since deploys can wipe/replace it). `startDato` and each `perMåned` key parse as plain `yyyy-MM-dd` /
+`yyyy-MM` strings on the frontend (not `new Date(...)`, to sidestep UTC-vs-local-timezone off-by-one-day
+bugs on the day component). The same backend also serves `knits.gl`'s counter (`~/dnielsengl.github.io/index.html`,
+`/besog-knits`) with the same response shape and the same frontend formatting logic, duplicated per
+that repo's no-shared-JS convention. The backend only allows CORS from `https://deni5-student.github.io`,
+`https://knits.gl`, and `https://www.knits.gl` specifically, so both counters show blank when testing
 locally via `file://` — that's expected, not a bug. Redeploying the backend after a Program.cs change:
 `dotnet publish -c Release -o ./publish` in `~/BesogsTaeller/`, zip the `publish/` contents, then drag
 the zip onto the app's Kudu Zip Deploy UI (Azure Portal → App Service → Development Tools → Advanced
