@@ -157,6 +157,17 @@
 
             <article class="post">
                 <span class="post-date">5. august 2026</span>
+                <h2>Besøgstælleren giver nu faktisk mening</h2>
+                <p>Fandt en bug i besøgstælleren fra tidligere i dag: frontenden læste et felt fra serveren, som slet ikke fandtes i svaret — så tallet var reelt usynligt/meningsløst på både wiki'en og knits.gl. Rettet, og samtidig gjort tælleren sjovere at kigge på, siden serveren allerede gemte mere end bare et rå tal.</p>
+                <ul>
+                    <li>Rettet feltnavnet, så tallet rent faktisk vises igen på begge sider.</li>
+                    <li>Tælleren viser nu besøg i alt, hvornår tællingen startede, og hvor mange besøg der har været i den aktuelle måned.</li>
+                    <li>Sjovt at se det køre i praksis på min egen selvbyggede server — ikke et øje tørt.</li>
+                </ul>
+            </article>
+
+            <article class="post">
+                <span class="post-date">5. august 2026</span>
                 <h2>Besøgstæller tilføjet med egen Azure-server</h2>
                 <p>Oprettet min første rigtige backend-server — en gratis ASP.NET Core-app på Azure App Service (F1 free tier) — som holder styr på et besøgstal. Wiki-forsiden viser nu, hvor mange gange den er blevet besøgt, hentet direkte fra serveren.</p>
                 <ul>
