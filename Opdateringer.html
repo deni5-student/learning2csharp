@@ -156,6 +156,20 @@
             </div>
 
             <article class="post">
+                <span class="post-date">6. august 2026</span>
+                <h2>knits.gl fik en hel aften for sig selv</h2>
+                <p>Brugte en aften på at give min virksomhedsside, knits.gl, et gennemgribende eftersyn — både visuelt og teknisk. Kort opsummeret:</p>
+                <ul>
+                    <li>Redesignet hele sitet fra bunden med et sammenhængende look (mørk marineblå/grøn palet, ikon-baserede kort), i stedet for det gamle, lidt tilfældige udseende.</li>
+                    <li>Flyttet QuestWorld-spillet over på wikiens Projekter-side, siden det er et studieprojekt og ikke et KNITS-produkt.</li>
+                    <li>Sat en rigtig Exchange Online-postkasse op (<code>kontakt@knits.gl</code>) på mit eget domæne — fra scratch, inklusiv DNS-verificering via Cloudflare.</li>
+                    <li>Bygget kontaktformularen om, så den sender via min egen Azure-server og Microsoft Graph API, i stedet for en tredjepartstjeneste (FormSubmit).</li>
+                    <li>Tilføjet Cloudflare Turnstile som bot-beskyttelse på formularen, så spam bliver stoppet før den overhovedet logges eller sendes videre.</li>
+                    <li>Skrevet en privatlivspolitik — og lærte undervejs at Grønland ikke er omfattet af EU's GDPR, men har sin egen udgave af persondataloven. God påmindelse om at dobbelttjekke hvilket lovgrundlag der faktisk gælder, i stedet for bare at bruge en dansk skabelon.</li>
+                </ul>
+            </article>
+
+            <article class="post">
                 <span class="post-date">5. august 2026</span>
                 <h2>Besøgstælleren giver nu faktisk mening</h2>
                 <p>Fandt en bug i besøgstælleren fra tidligere i dag: frontenden læste et felt fra serveren, som slet ikke fandtes i svaret — så tallet var reelt usynligt/meningsløst på både wiki'en og knits.gl. Rettet, og samtidig gjort tælleren sjovere at kigge på, siden serveren allerede gemte mere end bare et rå tal.</p>
