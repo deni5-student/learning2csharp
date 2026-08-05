@@ -82,6 +82,18 @@ All four of these pages use the same blank `.reference` citation pattern as Fago
 *The Linux Command Line* (William Shotts) — never copy text from this book verbatim onto a page
 (copyright); write original summaries/notes instead, and leave the chapter/page in the `.reference`
 box for the user to fill in by hand.
+### Projekter.html
+The only page on the site that uses JavaScript (a `<script>` block before `</body>`) — every other
+page is deliberately JS-free (see Architecture note above). Showcases the user's own C# console
+programs from `~/RiderProjects/Games_1st_opgave/`: real source code in a `<pre><code>` block, followed
+by a playable JS reimplementation of the same game logic inside a dummy Windows-style `.win-frame`
+(titlebar with a working close `×` button that hides the frame and reveals a "▶ Prøv den" button,
+which reopens it with a fresh game). When showing source code here, copy it faithfully from the actual
+`.cs` file — including any bugs — and call out discrepancies between the shown code and the JS
+simulation in a `.callout` note (e.g. the first entry, Gæt Et Tal, notes that the C# source's `"q"`
+branch is actually unreachable because `int.Parse` throws first, which the JS version silently fixes).
+Each project entry is a dated `.post`/`.post-date` card (same pattern as Opdateringer.html) so new
+projects added later can be told apart by when they were showcased.
 ### Opdateringer.html
 Blog-style changelog (renamed from "Daglige Notater" since updates don't happen daily). Newest post
 goes at the top, directly under the callout tip box; older posts stay below it. Keep entries short

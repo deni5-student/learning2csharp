@@ -2,7 +2,7 @@
 <html lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>Min Wiki med Sidebar</title>
+    <title>Projekter</title>
     <style>
         /* Grundlæggende design og nulstilling */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -51,6 +51,125 @@
         .card { background: white; padding: 20px; border: 1px solid #e3e3e8; border-radius: 8px; text-decoration: none; color: inherit; }
         .card:hover { border-color: #0066cc; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .card h3 { color: #0066cc; margin-bottom: 5px; }
+
+        .content h2 { font-size: 1.4rem; color: #111; margin-top: 30px; margin-bottom: 10px; }
+
+        /* Projekt-kort med dato-mærkat (samme mønster som Opdateringer.html) */
+        .post {
+            background: white;
+            border: 1px solid #e3e3e8;
+            border-radius: 8px;
+            padding: 25px 30px;
+            margin-bottom: 25px;
+        }
+        .post-date {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0066cc;
+            background: #eef2ff;
+            padding: 4px 10px;
+            border-radius: 999px;
+            margin-bottom: 10px;
+        }
+
+        /* KODEBLOK STYLING - lys boks som Visual Studio */
+        pre {
+            background-color: #ffffff;
+            border: 1px solid #e3e3e8;
+            border-left: 4px solid #007acc;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 15px 0 20px;
+        }
+        pre code {
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+        }
+
+        /* Dummy Windows-vindue omkring terminalen */
+        .win-frame {
+            border: 1px solid #999;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 15px 0 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .win-titlebar {
+            background: #e8e8e8;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 0 0 12px;
+            border-bottom: 1px solid #ccc;
+            user-select: none;
+        }
+        .win-title {
+            font-size: 0.85rem;
+            color: #333;
+        }
+        .win-controls { display: flex; }
+        .win-btn {
+            width: 40px;
+            height: 30px;
+            border: none;
+            background: transparent;
+            font-size: 0.85rem;
+            color: #333;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .win-btn:hover { background: #d8d8d8; }
+        .win-close:hover { background: #e81123; color: #fff; }
+
+        /* "Prøv den"-knap, der dukker op igen når vinduet er lukket */
+        .try-again-btn {
+            display: none;
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-family: inherit;
+            cursor: pointer;
+            margin: 15px 0 20px;
+        }
+        .try-again-btn:hover { background: #0052a3; }
+
+        /* Terminal-simulation — spilbar, men bevidst ikke en 1:1 konsol */
+        .terminal {
+            background: #1e1e1e;
+            padding: 16px 20px;
+            cursor: text;
+        }
+        .terminal-output {
+            color: #d4d4d4;
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            white-space: pre-wrap;
+            max-height: 280px;
+            overflow-y: auto;
+            margin-bottom: 8px;
+        }
+        .terminal-input-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-top: 1px solid #3a3a3a;
+            padding-top: 8px;
+        }
+        .terminal-prompt { color: #4ec9b0; font-family: 'Consolas', 'Courier New', Courier, monospace; }
+        .terminal-input-row input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #d4d4d4;
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+        }
     </style>
 </head>
 <body>
@@ -94,27 +213,203 @@
 
         <!-- HØJRE SIDE: FORSIDENS INDHOLD -->
         <main class="content">
-            <h1>Velkommen Projekter.html</h1>
-            <p>Dette er din nye, centrale startside. Herfra kan du navigere rundt i alle dine emner og noter ved hjælp af sidebaren til venstre.</p>
+            <h1>Projekter</h1>
+            <p>Konsolprogrammer og små øvelsesopgaver fra undervisningen, med kildekode og en spilbar terminal-simulation, så man kan prøve dem direkte i browseren.</p>
 
             <div class="callout">
-                <strong>💡 Tip:</strong> Du kan tilføje nye menupunkter i HTML-koden under <code>&lt;aside&gt;</code>-tagget til venstre.
+                <strong>💡 Tip:</strong> Terminalerne herunder er ikke en 1:1-kopi af en rigtig konsol — de er en JavaScript-simulation af den samme spillogik, så man kan prøve programmet uden at have .NET installeret.
             </div>
+
+            <article class="post">
+                <span class="post-date">5. august 2026</span>
+                <h2>Gæt Et Tal</h2>
+                <p>Et lille konsolspil: computeren vælger et tilfældigt tal mellem 1 og 100, og du skal gætte det med så få forsøg som muligt. Efter hvert gæt fortæller programmet, om tallet skal være højere eller lavere.</p>
+
+                <h3 style="margin-top: 20px; margin-bottom: 10px;">Kildekode (C#)</h3>
+                <pre><code>public class GætEtTal
+{
+    public void Start()
+    {
+        bool kører = true;
+        Random rnd = new Random();
+        int hemmeligtTal = rnd.Next(1, 101);
+        int forsøg = 0;
+
+        while (kører)
+        {
+            Console.Clear();
+            Console.WriteLine("Velkommen til gæt et tal spillet");
+            Console.WriteLine("Du skal prøve og gætte et tal mellem 1 &amp; 100");
+            Console.WriteLine("Antal forsøg: " + forsøg);
+            Console.WriteLine("Skriv det vil gætte på:");
+            string input = Console.ReadLine();
+
+            int gæt = int.Parse(input);
+
+            if (gæt == hemmeligtTal)
+            {
+                Console.WriteLine("du gættede rigtigt!");
+                forsøg++;
+                kører = false;
+                Console.ReadKey();
+            }
+            else if (gæt &lt; hemmeligtTal)
+            {
+                Console.WriteLine("Tallet du skal gætte er højere");
+                forsøg++;
+                Console.ReadKey();
+            }
+            else if (gæt &gt; hemmeligtTal)
+            {
+                Console.WriteLine("Tallet du skal gætte er lavere");
+                forsøg++;
+                Console.ReadKey();
+            }
+            else if (input == "q")
+            {
+                Console.WriteLine("Tak for spillet");
+                break;
+            }
+            else
+            {
+                Console.WriteLine("forkert input");
+                Console.ReadKey();
+            }
+        }
+    }
+}</code></pre>
+                <div class="callout" style="margin-top: 15px;">
+                    <strong>💡 Bemærk:</strong> <code>q</code>-grenen i den rigtige C#-kode rammes faktisk aldrig — <code>int.Parse(input)</code> kaster en exception, før koden når frem til at tjekke for <code>"q"</code>. Terminal-simulationen herunder retter denne bug, så 'q' rent faktisk afslutter spillet.
+                </div>
+
+                <h3 style="margin-top: 20px; margin-bottom: 10px;">Prøv det selv</h3>
+                <div class="win-frame" id="gaet-window">
+                    <div class="win-titlebar">
+                        <span class="win-title">GætEtTal.exe</span>
+                        <div class="win-controls">
+                            <button class="win-btn" tabindex="-1" aria-label="Minimer">&#8211;</button>
+                            <button class="win-btn" tabindex="-1" aria-label="Maksimer">&#9633;</button>
+                            <button class="win-btn win-close" id="gaet-close" aria-label="Luk">&times;</button>
+                        </div>
+                    </div>
+                    <div class="terminal" id="gaet-terminal">
+                        <div class="terminal-output" id="gaet-output"></div>
+                        <div class="terminal-input-row">
+                            <span class="terminal-prompt">&gt;</span>
+                            <input type="text" id="gaet-input" autocomplete="off" spellcheck="false" aria-label="Skriv dit gæt">
+                        </div>
+                    </div>
+                </div>
+                <button class="try-again-btn" id="gaet-reopen">▶ Prøv den</button>
+            </article>
 
             <h2>Hurtige genveje</h2>
             <div class="grid-links">
-                <a href="HTML-Guides.html" class="card">
-                    <h3>HTML Guides →</h3>
-                    <p>Lær det grundlæggende om tags, elementer og struktur.</p>
+                <a href="CSharp.html" class="card">
+                    <h3>C# Learning →</h3>
+                    <p>Grundlæggende noter om C#-syntaks og OOP.</p>
                 </a>
-                <a href="Projekter.html" class="card">
-                    <h3>Projekter →</h3>
-                    <p>Oversigt over igangværende og afsluttede opgaver.</p>
+                <a href="Opdateringer.html" class="card">
+                    <h3>Blog →</h3>
+                    <p>Log over hvad der er sket med wiki'en.</p>
                 </a>
             </div>
         </main>
 
     </div>
+
+    <script>
+        (function () {
+            var output = document.getElementById('gaet-output');
+            var input = document.getElementById('gaet-input');
+            var terminal = document.getElementById('gaet-terminal');
+            var vindue = document.getElementById('gaet-window');
+            var lukKnap = document.getElementById('gaet-close');
+            var genåbnKnap = document.getElementById('gaet-reopen');
+            var hemmeligtTal, forsøg, spillerAktivt;
+
+            lukKnap.addEventListener('click', function () {
+                vindue.style.display = 'none';
+                genåbnKnap.style.display = 'inline-block';
+                spillerAktivt = false;
+            });
+
+            genåbnKnap.addEventListener('click', function () {
+                vindue.style.display = '';
+                genåbnKnap.style.display = 'none';
+                nytSpil();
+                input.focus();
+            });
+
+            function skriv(tekst) {
+                output.textContent += tekst + "\n";
+                output.scrollTop = output.scrollHeight;
+            }
+
+            function nytSpil() {
+                hemmeligtTal = Math.floor(Math.random() * 100) + 1;
+                forsøg = 0;
+                spillerAktivt = true;
+                output.textContent = "";
+                skriv("Velkommen til gæt et tal spillet");
+                skriv("Du skal prøve og gætte et tal mellem 1 & 100");
+                skriv("Skriv 'q' for at afslutte.");
+                skriv("");
+                skriv("Antal forsøg: 0");
+                skriv("Skriv det du vil gætte på:");
+            }
+
+            terminal.addEventListener('click', function () {
+                input.focus();
+            });
+
+            input.addEventListener('keydown', function (e) {
+                if (e.key !== 'Enter') return;
+                var værdi = input.value.trim();
+                input.value = "";
+
+                if (!spillerAktivt) {
+                    nytSpil();
+                    return;
+                }
+
+                skriv("> " + værdi);
+
+                if (værdi.toLowerCase() === 'q') {
+                    skriv("Tak for spillet");
+                    skriv("");
+                    skriv("(skriv noget og tryk Enter for at starte et nyt spil)");
+                    spillerAktivt = false;
+                    return;
+                }
+
+                var gæt = parseInt(værdi, 10);
+                if (isNaN(gæt)) {
+                    skriv("forkert input");
+                    skriv("Skriv det du vil gætte på:");
+                    return;
+                }
+
+                forsøg++;
+                if (gæt === hemmeligtTal) {
+                    skriv("du gættede rigtigt! (" + forsøg + " forsøg)");
+                    skriv("");
+                    skriv("(skriv noget og tryk Enter for at starte et nyt spil)");
+                    spillerAktivt = false;
+                } else if (gæt < hemmeligtTal) {
+                    skriv("Tallet du skal gætte er højere");
+                    skriv("Antal forsøg: " + forsøg);
+                    skriv("Skriv det du vil gætte på:");
+                } else {
+                    skriv("Tallet du skal gætte er lavere");
+                    skriv("Antal forsøg: " + forsøg);
+                    skriv("Skriv det du vil gætte på:");
+                }
+            });
+
+            nytSpil();
+        })();
+    </script>
 
 </body>
 </html>
