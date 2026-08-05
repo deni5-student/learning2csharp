@@ -57,6 +57,14 @@ entry explains the underlying concept (not just what the line of code does — w
 has actually done), not just syntax, and pairs Danish and English terms so the user can practice
 saying them aloud. New entries should follow this same pattern and keep the `.reference` box blank
 for the user to fill in from their own textbook (currently: *C# 10.0 All-in-One For Dummies*).
+### Ubuntu.html
+Uses the same blank `.reference` citation pattern as Fagord.html, sourced from *The Linux Command
+Line* (William Shotts) — never copy text from this book verbatim onto the page (copyright); write
+original summaries/notes instead, and leave the chapter/page in the `.reference` box for the user to
+fill in by hand. Content is grouped into three `.command-list` sections: the original "10
+grundlæggende Linux-kommandoer" (basic commands), "Shell Learning" (pipes/redirection, globbing,
+env vars, job control, shebang, aliases, history), and "Environment Configuration" (`.bashrc` vs
+`.profile`, `$PATH`, `export`, `PS1`, `source`, dotfiles).
 ### Opdateringer.html
 Blog-style changelog (renamed from "Daglige Notater" since updates don't happen daily). Newest post
 goes at the top, directly under the callout tip box; older posts stay below it. Keep entries short

@@ -70,6 +70,18 @@
             color: #007acc;
             font-weight: bold;
         }
+
+        /* Reference-boks til bogsider — bevidst tom, udfyldes manuelt */
+        .reference {
+            margin-top: 15px;
+            padding: 10px 14px;
+            background: #fffbeb;
+            border-left: 4px solid #d97706;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.9rem;
+            color: #78350f;
+        }
+        .reference strong { color: #92400e; }
     </style>
 </head>
 <body>
@@ -129,6 +141,42 @@
                 <li><code>sudo</code> — Kører en kommando med administrator-rettigheder.</li>
                 <li><code>apt</code> — Installerer, opdaterer og fjerner programmer (f.eks. <code>sudo apt update</code>).</li>
             </ul>
+            <div class="reference">
+                📖 <strong>Kilde:</strong> The Linux Command Line — kapitel ___, s. ___ <em>(udfyld selv)</em>
+            </div>
+
+            <h2>Shell Learning</h2>
+            <p>Shellen (fx <code>bash</code>) er selve kommandofortolkeren — programmet der læser det, du skriver, og udfører det. At forstå shellen handler ikke kun om at kende enkelte kommandoer, men om at forstå de byggeklodser, der lader dig kombinere dem.</p>
+            <ul class="command-list">
+                <li><code>|</code> (pipe) — Sender output fra én kommando ind som input til den næste, fx <code>cat fil.txt | grep "fejl"</code>.</li>
+                <li><code>&gt;</code> og <code>&gt;&gt;</code> — Omdirigerer output til en fil; <code>&gt;</code> overskriver, <code>&gt;&gt;</code> tilføjer i slutningen.</li>
+                <li><code>&lt;</code> — Omdirigerer en fils indhold ind som input til en kommando.</li>
+                <li><code>$VARIABEL</code> / <code>export</code> — Miljøvariabler gemmer værdier (fx stier), som både shellen selv og programmer startet fra den kan læse.</li>
+                <li><code>*</code>, <code>?</code>, <code>[]</code> (globbing) — Wildcards der matcher filnavne, fx <code>*.txt</code> matcher alle tekstfiler i mappen.</li>
+                <li><code>$(kommando)</code> — Kommando-substitution: kører en kommando og indsætter dens output som tekst et andet sted.</li>
+                <li><code>&</code>, <code>jobs</code>, <code>fg</code>, <code>bg</code>, <code>Ctrl+Z</code> — Jobstyring: kør processer i baggrunden og skift mellem dem.</li>
+                <li><code>#!/bin/bash</code> — Shebang-linjen øverst i et script, der fortæller systemet hvilken fortolker scriptet skal køres med.</li>
+                <li><code>alias</code> — Laver et kortere navn for en lang kommando, fx <code>alias ll='ls -la'</code>.</li>
+                <li><code>history</code>, <code>↑</code>, <code>Ctrl+R</code> — Genkald og søg i tidligere kørte kommandoer.</li>
+            </ul>
+            <div class="reference">
+                📖 <strong>Kilde:</strong> The Linux Command Line — kapitel ___, s. ___ <em>(udfyld selv)</em>
+            </div>
+
+            <h2>Environment Configuration</h2>
+            <p>Ubuntu (og Linux generelt) lader dig tilpasse, hvordan shellen og dit miljø opfører sig, via en række konfigurationsfiler, der bliver læst automatisk, når en ny terminal eller session startes.</p>
+            <ul class="command-list">
+                <li><code>~/.bashrc</code> — Køres ved hver ny interaktiv terminal; her sættes typisk aliases, prompt-udseende og shell-specifikke indstillinger.</li>
+                <li><code>~/.profile</code> / <code>~/.bash_profile</code> — Køres ved login; bruges ofte til at sætte miljøvariabler, der skal gælde for hele sessionen (ikke kun terminalen).</li>
+                <li><code>$PATH</code> — Miljøvariabel med en liste af mapper, som shellen leder igennem for at finde det program, du beder den køre.</li>
+                <li><code>export VARIABEL=værdi</code> — Gør en variabel synlig for programmer startet fra shellen, ikke kun shellen selv.</li>
+                <li><code>PS1</code> — Miljøvariabel der styrer, hvordan selve kommandoprompten ser ud (fx farver, brugernavn, mappe).</li>
+                <li><code>source ~/.bashrc</code> — Genindlæser en konfigurationsfil i den aktuelle terminal, uden at man behøver åbne en ny.</li>
+                <li><code>dotfiles</code> — Fællesbetegnelse for skjulte konfigurationsfiler (dem der starter med <code>.</code>), som <code>.bashrc</code> og <code>.gitconfig</code>.</li>
+            </ul>
+            <div class="reference">
+                📖 <strong>Kilde:</strong> The Linux Command Line — kapitel ___, s. ___ <em>(udfyld selv)</em>
+            </div>
 
             <h2>Hurtige genveje</h2>
             <div class="grid-links">
