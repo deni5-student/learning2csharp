@@ -82,9 +82,22 @@ All four of these pages use the same blank `.reference` citation pattern as Fago
 *The Linux Command Line* (William Shotts) — never copy text from this book verbatim onto a page
 (copyright); write original summaries/notes instead, and leave the chapter/page in the `.reference`
 box for the user to fill in by hand.
+### index.html and the BesogsTaeller Azure backend
+`index.html` fetches a visit count from `https://deni5-f8f9fzcefnf5babj.denmarkeast-01.azurewebsites.net/besog`
+(displayed at the bottom of the page as "Besøg #N") — this is the user's own ASP.NET Core Minimal API
+app (source at `~/BesogsTaeller/Program.cs` on this machine, not in this repo), deployed to a free F1
+Azure App Service, not a third-party service. The endpoint increments a counter persisted to a text
+file under the App Service's `/home/data/` (the one path that survives redeploys — writing inside
+`wwwroot` is unsafe since deploys can wipe/replace it). The backend only allows CORS from
+`https://deni5-student.github.io` specifically, so the counter will show blank when testing `index.html`
+locally via `file://` — that's expected, not a bug. Redeploying the backend after a Program.cs change:
+`dotnet publish -c Release -o ./publish` in `~/BesogsTaeller/`, zip the `publish/` contents, then drag
+the zip onto the app's Kudu Zip Deploy UI (Azure Portal → App Service → Development Tools → Advanced
+Tools → Go → Tools → Zip Push Deploy).
 ### Projekter.html
-The only page on the site that uses JavaScript (a `<script>` block before `</body>`) — every other
-page is deliberately JS-free (see Architecture note above). Showcases the user's own C# console
+The only page in this repo that uses JavaScript (a `<script>` block before `</body>`) — every other
+page is deliberately JS-free (see Architecture note above; index.html above is the other exception,
+for the visitor counter). Showcases the user's own C# console
 programs from `~/RiderProjects/Games_1st_opgave/`: real source code in a `<pre><code>` block, followed
 by a playable JS reimplementation of the same game logic inside a dummy Windows-style `.win-frame`
 (titlebar with a working close `×` button that hides the frame and reveals a "▶ Prøv den" button,

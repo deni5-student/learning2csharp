@@ -2,7 +2,7 @@
 <html lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>Min Wiki med Sidebar</title>
+    <title>Forside</title>
     <style>
         /* Grundlæggende design og nulstilling */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -51,6 +51,14 @@
         .card { background: white; padding: 20px; border: 1px solid #e3e3e8; border-radius: 8px; text-decoration: none; color: inherit; }
         .card:hover { border-color: #0066cc; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .card h3 { color: #0066cc; margin-bottom: 5px; }
+
+        /* Besøgstæller — hentet fra min egen ASP.NET Core-server på Azure */
+        .besogstaeller {
+            text-align: center;
+            color: #999;
+            font-size: 0.85rem;
+            margin-top: 40px;
+        }
     </style>
 </head>
 <body>
@@ -112,9 +120,22 @@
                     <p>Oversigt over igangværende og afsluttede opgaver.</p>
                 </a>
             </div>
+
+            <p class="besogstaeller" id="besogstaeller">Besøg #…</p>
         </main>
 
     </div>
+
+    <script>
+        fetch('https://deni5-f8f9fzcefnf5babj.denmarkeast-01.azurewebsites.net/besog')
+            .then(function (svar) { return svar.json(); })
+            .then(function (data) {
+                document.getElementById('besogstaeller').textContent = 'Besøg #' + data.besog;
+            })
+            .catch(function () {
+                document.getElementById('besogstaeller').textContent = '';
+            });
+    </script>
 
 </body>
 </html>
