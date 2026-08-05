@@ -35,9 +35,11 @@ Because every page duplicates the same `<style>` block with minor variations, wh
 visual style (sidebar colors, fonts, grid layout, etc.) expect to replicate the edit across all HTML
 files individually rather than editing one shared source.
 ### Current Vidensbase order
-`CSharp.html` (with `VisualStudio.html` and `Rider.html` as sub-links) → `UML.html` → `UnifiedProcess.html` →
-`Fagord.html` → `HTML-Guides.html` → `CSS-Styling.html` → `Ubuntu.html` → `Python.html` → `Windows.html`
-(with `WSL.html` as a sub-link).
+`CSharp.html` (with `fagord.html` as a sub-link) → `UML.html` → `UnifiedProcess.html` → `HTML-Guides.html` →
+`CSS-Styling.html` → `Ubuntu.html` (with `Rider.html` as a sub-link) → `Python.html` → `Windows.html`
+(with `VisualStudio.html` and `WSL.html` as sub-links). IDE sub-links are grouped by the OS they're
+mainly used on (Rider under Ubuntu since it's cross-platform and commonly run on Linux; Visual Studio
+under Windows since it's Windows-specific) rather than under C# Learning.
 ### UML.html and UnifiedProcess.html
 Notes for a school subject on UML and Unified Process (UP), which the user follows closely in their
 coursework. `UML.html` covers class diagrams (visibility symbols, association/aggregation/composition/
