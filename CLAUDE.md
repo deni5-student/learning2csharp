@@ -35,8 +35,19 @@ Because every page duplicates the same `<style>` block with minor variations, wh
 visual style (sidebar colors, fonts, grid layout, etc.) expect to replicate the edit across all HTML
 files individually rather than editing one shared source.
 ### Current Vidensbase order
-`CSharp.html` (with `VisualStudio.html` and `Rider.html` as sub-links) → `Fagord.html` → `HTML-Guides.html` →
-`CSS-Styling.html` → `Ubuntu.html` → `Python.html` → `Windows.html` (with `WSL.html` as a sub-link).
+`CSharp.html` (with `VisualStudio.html` and `Rider.html` as sub-links) → `UML.html` → `UnifiedProcess.html` →
+`Fagord.html` → `HTML-Guides.html` → `CSS-Styling.html` → `Ubuntu.html` → `Python.html` → `Windows.html`
+(with `WSL.html` as a sub-link).
+### UML.html and UnifiedProcess.html
+Notes for a school subject on UML and Unified Process (UP), which the user follows closely in their
+coursework. `UML.html` covers class diagrams (visibility symbols, association/aggregation/composition/
+generalization/dependency relationships, multiplicity), use case diagrams (actor, use case, include/
+extend), sequence diagrams, and activity diagrams. `UnifiedProcess.html` covers UP's four phases
+(Inception, Elaboration, Construction, Transition), its iterative/incremental nature, and its nine
+disciplines (Business Modeling, Requirements, Analysis & Design, Implementation, Test, Deployment,
+Configuration & Change Management, Project Management, Environment). The two pages cross-link each
+other via their "Hurtige genveje" cards, since UP's use-case-driven approach ties directly back to
+UML's use case diagrams.
 ### Fagord.html
 Danish/English glossary of C# terminology (Klasse/Class, Objekt/Object, Konstruktør/Constructor,
 Array, Metode/Method, Variabel/Variable, Indkapsling/Encapsulation, Arv/Inheritance, Løkke/Loop,

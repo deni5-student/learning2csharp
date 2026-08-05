@@ -2,7 +2,7 @@
 <html lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>Python</title>
+    <title>UML</title>
     <style>
         /* Grundlæggende design og nulstilling */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -53,21 +53,6 @@
         .card:hover { border-color: #0066cc; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .card h3 { color: #0066cc; margin-bottom: 5px; }
 
-        /* KODEBLOK STYLING - lys boks som Visual Studio */
-        pre {
-            background-color: #ffffff;
-            border: 1px solid #e3e3e8;
-            border-left: 4px solid #007acc;
-            padding: 15px;
-            border-radius: 6px;
-            overflow-x: auto;
-            margin: 20px 0;
-        }
-        pre code {
-            font-family: 'Consolas', 'Courier New', Courier, monospace;
-            font-size: 0.95rem;
-        }
-
         /* Koncept-liste */
         .command-list { list-style: none; margin: 20px 0; }
         .command-list li {
@@ -105,13 +90,13 @@
                 <li><a href="CSharp.html">C# Learning</a></li>
                 <li><a href="VisualStudio.html" class="sub-link">↳ Visual Studio</a></li>
                 <li><a href="Rider.html" class="sub-link">↳ JetBrains Rider</a></li>
-                <li><a href="UML.html">UML</a></li>
+                <li><a href="UML.html" style="background: #f0f4f8; color: #0066cc; font-weight: bold;">UML</a></li>
                 <li><a href="UnifiedProcess.html">Unified Process</a></li>
                 <li><a href="fagord.html">Fagord</a></li>
                 <li><a href="HTML-Guides.html">HTML Guides</a></li>
                 <li><a href="CSS-Styling.html">CSS Styling</a></li>
                 <li><a href="Ubuntu.html">Ubuntu</a></li>
-                <li><a href="Python.html" style="background: #f0f4f8; color: #0066cc; font-weight: bold;">Python</a></li>
+                <li><a href="Python.html">Python</a></li>
                 <li><a href="Windows.html">Windows</a></li>
                 <li><a href="WSL.html" class="sub-link">↳ WSL</a></li>
             </ul>
@@ -125,53 +110,59 @@
 
         <!-- HØJRE SIDE: FORSIDENS INDHOLD -->
         <main class="content">
-            <h1>Python</h1>
-            <p>En introduktion til Python — et af de mest populære programmeringssprog, kendt for sin enkle og letlæselige syntaks.</p>
+            <h1>UML</h1>
+            <p>Grundlæggende noter om UML (Unified Modeling Language) — et visuelt sprog til at beskrive, designe og dokumentere et softwaresystem, uafhængigt af hvilket programmeringssprog det bygges i.</p>
 
             <div class="callout">
-                <strong>💡 Tip:</strong> Python bruger indrykning (mellemrum/tab) i stedet for krøllede parenteser <code>{ }</code> til at afgrænse kodeblokke — det er en del af sprogets syntaks, ikke bare formatering.
+                <strong>💡 Tip:</strong> UML er ikke kode og ikke et programmeringssprog — det er en fælles visuel notation, som udviklere og interessenter kan bruge til at tale om systemet, før (og mens) det bygges.
             </div>
 
-            <h2>Hvad er Python?</h2>
-            <p>Python er et fortolket (interpreted) og dynamisk typet sprog, der bruges bredt inden for alt fra webudvikling og automatisering til dataanalyse og maskinlæring. Det er ofte et godt sprog at starte med, fordi koden minder om almindeligt engelsk og kræver mindre "boilerplate" end sprog som C#.</p>
+            <h2>Hvad er UML?</h2>
+            <p>UML er en standardiseret samling af diagramtyper til at visualisere et systems struktur (hvad det <em>består af</em>) og adfærd (hvad det <em>gør</em> over tid). Man skelner typisk mellem to hovedkategorier: <strong>strukturelle diagrammer</strong> (fx klassediagrammer) og <strong>adfærdsdiagrammer</strong> (fx use case- og sequence-diagrammer).</p>
 
-            <h2>Eksempel på Python kode</h2>
-            <pre><code>navn = "Verden"
-alder = 20
-
-print(f"Hej {navn}, du er {alder} år gammel!")
-
-if alder >= 18:
-    print("Du er myndig.")
-else:
-    print("Du er ikke myndig endnu.")
-
-for i in range(3):
-    print(f"Runde {i + 1}")</code></pre>
-
-            <h2>Grundlæggende koncepter</h2>
+            <h2>Klassediagram (Class Diagram)</h2>
+            <p>Det mest grundlæggende strukturelle diagram. Hver klasse tegnes som en boks opdelt i tre dele: klassens navn øverst, attributter (data) i midten, og metoder (adfærd) nederst.</p>
             <ul class="command-list">
-                <li><code>print()</code> — Skriver tekst eller værdier ud i konsollen.</li>
-                <li><code>variabel = værdi</code> — Opretter en variabel; ingen typedeklaration nødvendig.</li>
-                <li><code>input()</code> — Læser input fra brugeren i konsollen.</li>
-                <li><code>if / elif / else</code> — Betingelser, der styrer programmets flow.</li>
-                <li><code>for</code> og <code>while</code> — Løkker til at gentage kode.</li>
-                <li><code>list</code>, <code>dict</code>, <code>tuple</code> — Indbyggede datastrukturer til at gemme flere værdier.</li>
-                <li><code>def</code> — Bruges til at definere en funktion.</li>
-                <li><code>Indrykning</code> — Bruges i stedet for <code>{ }</code> til at markere kodeblokke.</li>
-                <li><code>import</code> — Henter funktionalitet fra andre moduler og biblioteker.</li>
-                <li><code># kommentar</code> — Alt efter <code>#</code> på en linje ignoreres af Python.</li>
+                <li><code>+</code> — Public: attributten/metoden kan tilgås udefra klassen.</li>
+                <li><code>-</code> — Private: kan kun tilgås inde fra klassen selv.</li>
+                <li><code>#</code> — Protected: kan tilgås fra klassen selv og dens subklasser.</li>
+                <li><code>~</code> — Package: kan tilgås fra andre klasser i samme package/namespace.</li>
             </ul>
+
+            <h2>Relationer mellem klasser</h2>
+            <ul class="command-list">
+                <li><code>Association</code> — En generel forbindelse mellem to klasser (en almindelig streg); de "kender til" hinanden.</li>
+                <li><code>Aggregation</code> — En "har-en"-relation, hvor delen kan eksistere uden helheden (åben rombe i den ende, der er "helheden"). Fx et Hold har Spillere, men Spillerne findes stadig, hvis holdet nedlægges.</li>
+                <li><code>Composition</code> — En stærkere "har-en"-relation, hvor delen <strong>ikke</strong> kan eksistere uden helheden (udfyldt rombe). Fx et Hus har Værelser — værelserne giver ikke mening uden huset.</li>
+                <li><code>Generalization / Arv</code> — Angiver arv mellem klasser (streg med hul trekant-pil, der peger på superklassen).</li>
+                <li><code>Dependency</code> — En klasse er midlertidigt afhængig af en anden, fx som parameter i en metode (stiplet pil).</li>
+                <li><code>Multiplicitet</code> — Tal i hver ende af en relation, der angiver hvor mange instanser der indgår, fx <code>1</code>, <code>0..1</code>, <code>1..*</code> eller <code>0..*</code>.</li>
+            </ul>
+
+            <h2>Use Case-diagram</h2>
+            <p>Viser systemet udefra — hvad brugerne (og andre systemer) kan bruge det til, uden at gå ind i implementeringsdetaljer.</p>
+            <ul class="command-list">
+                <li><code>Actor</code> — En bruger eller et eksternt system, der interagerer med systemet (tegnes som en "stick figure").</li>
+                <li><code>Use Case</code> — Et mål eller en funktion, systemet leverer til en actor (tegnes som en oval).</li>
+                <li><code>Include</code> — Et use case inkluderer altid et andet (fx "Log ind" er altid en del af "Afgiv bestilling").</li>
+                <li><code>Extend</code> — Et use case udvider et andet under bestemte betingelser, men ikke altid (fx "Brug rabatkode" udvider "Afgiv bestilling").</li>
+            </ul>
+
+            <h2>Sequence-diagram</h2>
+            <p>Et adfærdsdiagram, der viser, hvordan objekter udveksler beskeder med hinanden <strong>over tid</strong>. Hvert objekt har en lodret "lifeline", og pile mellem lifelines viser hvilke beskeder/metodekald der sendes, og i hvilken rækkefølge.</p>
+
+            <h2>Aktivitetsdiagram (Activity Diagram)</h2>
+            <p>Minder om et flowchart og bruges til at modellere arbejdsgange eller logikken i en proces: en startnode, en række handlinger (actions), beslutningspunkter (diamant-form med flere veje ud) og en slutnode.</p>
 
             <h2>Hurtige genveje</h2>
             <div class="grid-links">
-                <a href="HTML-Guides.html" class="card">
-                    <h3>HTML Guides →</h3>
-                    <p>Lær det grundlæggende om tags, elementer og struktur.</p>
+                <a href="UnifiedProcess.html" class="card">
+                    <h3>Unified Process →</h3>
+                    <p>Den iterative udviklingsproces, som UML-diagrammerne typisk bruges igennem.</p>
                 </a>
-                <a href="Ubuntu.html" class="card">
-                    <h3>Ubuntu →</h3>
-                    <p>10 grundlæggende Linux-kommandoer, alle bør kende.</p>
+                <a href="CSharp.html" class="card">
+                    <h3>C# Learning →</h3>
+                    <p>Grundlæggende noter om C#-syntaks og OOP.</p>
                 </a>
             </div>
         </main>
