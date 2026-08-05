@@ -36,10 +36,11 @@ visual style (sidebar colors, fonts, grid layout, etc.) expect to replicate the 
 files individually rather than editing one shared source.
 ### Current Vidensbase order
 `CSharp.html` (with `fagord.html` as a sub-link) → `UML.html` → `UnifiedProcess.html` → `HTML-Guides.html` →
-`CSS-Styling.html` → `Ubuntu.html` (with `Rider.html` as a sub-link) → `Python.html` → `Windows.html`
-(with `VisualStudio.html` and `WSL.html` as sub-links). IDE sub-links are grouped by the OS they're
-mainly used on (Rider under Ubuntu since it's cross-platform and commonly run on Linux; Visual Studio
-under Windows since it's Windows-specific) rather than under C# Learning.
+`CSS-Styling.html` → `Ubuntu.html` (with `Rider.html`, `ShellLearning.html`, `EnvironmentConfiguration.html`,
+and `HurtigeGenveje.html` as sub-links) → `Python.html` → `Windows.html` (with `VisualStudio.html` and
+`WSL.html` as sub-links). IDE sub-links are grouped by the OS they're mainly used on (Rider under
+Ubuntu since it's cross-platform and commonly run on Linux; Visual Studio under Windows since it's
+Windows-specific) rather than under C# Learning.
 ### UML.html and UnifiedProcess.html
 Notes for a school subject on UML and Unified Process (UP), which the user follows closely in their
 coursework. `UML.html` covers class diagrams (visibility symbols, association/aggregation/composition/
@@ -59,14 +60,19 @@ entry explains the underlying concept (not just what the line of code does — w
 has actually done), not just syntax, and pairs Danish and English terms so the user can practice
 saying them aloud. New entries should follow this same pattern and keep the `.reference` box blank
 for the user to fill in from their own textbook (currently: *C# 10.0 All-in-One For Dummies*).
-### Ubuntu.html
-Uses the same blank `.reference` citation pattern as Fagord.html, sourced from *The Linux Command
-Line* (William Shotts) — never copy text from this book verbatim onto the page (copyright); write
-original summaries/notes instead, and leave the chapter/page in the `.reference` box for the user to
-fill in by hand. Content is grouped into three `.command-list` sections: the original "10
-grundlæggende Linux-kommandoer" (basic commands), "Shell Learning" (pipes/redirection, globbing,
-env vars, job control, shebang, aliases, history), and "Environment Configuration" (`.bashrc` vs
-`.profile`, `$PATH`, `export`, `PS1`, `source`, dotfiles).
+### Ubuntu.html and its sub-pages
+`Ubuntu.html` itself only holds the "10 grundlæggende Linux-kommandoer" (basic commands) list now —
+"Shell Learning" (pipes/redirection, globbing, env vars, job control, shebang, aliases, history) and
+"Environment Configuration" (`.bashrc` vs `.profile`, `$PATH`, `export`, `PS1`, `source`, dotfiles)
+were split out into their own sub-pages, `ShellLearning.html` and `EnvironmentConfiguration.html`,
+sidebar-linked as `sub-link`s under Ubuntu alongside `Rider.html`. A fourth sub-link,
+`HurtigeGenveje.html`, holds basic terminal keyboard shortcuts (Ctrl+C, Ctrl+R reverse search, Tab
+completion, `!!`, `cd -`, etc.) — note this is a distinct dedicated page from the "Hurtige genveje"
+`.grid-links` shortcut-card widget every page has at the bottom; don't conflate the two when editing.
+All four of these pages use the same blank `.reference` citation pattern as Fagord.html, sourced from
+*The Linux Command Line* (William Shotts) — never copy text from this book verbatim onto a page
+(copyright); write original summaries/notes instead, and leave the chapter/page in the `.reference`
+box for the user to fill in by hand.
 ### Opdateringer.html
 Blog-style changelog (renamed from "Daglige Notater" since updates don't happen daily). Newest post
 goes at the top, directly under the callout tip box; older posts stay below it. Keep entries short

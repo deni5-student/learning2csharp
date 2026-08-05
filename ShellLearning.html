@@ -2,7 +2,7 @@
 <html lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>Windows</title>
+    <title>Shell Learning</title>
     <style>
         /* Grundlæggende design og nulstilling */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -52,6 +52,37 @@
         .card { background: white; padding: 20px; border: 1px solid #e3e3e8; border-radius: 8px; text-decoration: none; color: inherit; }
         .card:hover { border-color: #0066cc; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .card h3 { color: #0066cc; margin-bottom: 5px; }
+
+        /* Kommando-liste */
+        .command-list { list-style: none; margin: 20px 0; }
+        .command-list li {
+            background: white;
+            border: 1px solid #e3e3e8;
+            border-left: 4px solid #007acc;
+            border-radius: 0 6px 6px 0;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+        }
+        .command-list code {
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            background: #f0f4f8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #007acc;
+            font-weight: bold;
+        }
+
+        /* Reference-boks til bogsider — bevidst tom, udfyldes manuelt */
+        .reference {
+            margin-top: 15px;
+            padding: 10px 14px;
+            background: #fffbeb;
+            border-left: 4px solid #d97706;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.9rem;
+            color: #78350f;
+        }
+        .reference strong { color: #92400e; }
     </style>
 </head>
 <body>
@@ -76,11 +107,11 @@
                 <li><a href="CSS-Styling.html">CSS Styling</a></li>
                 <li><a href="Ubuntu.html">Ubuntu</a></li>
                 <li><a href="Rider.html" class="sub-link">↳ JetBrains Rider</a></li>
-                <li><a href="ShellLearning.html" class="sub-link">↳ Shell Learning</a></li>
+                <li><a href="ShellLearning.html" class="sub-link" style="background: #f0f4f8; color: #0066cc; font-weight: bold;">↳ Shell Learning</a></li>
                 <li><a href="EnvironmentConfiguration.html" class="sub-link">↳ Environment Configuration</a></li>
                 <li><a href="HurtigeGenveje.html" class="sub-link">↳ Hurtige Genveje</a></li>
                 <li><a href="Python.html">Python</a></li>
-                <li><a href="Windows.html" style="background: #f0f4f8; color: #0066cc; font-weight: bold;">Windows</a></li>
+                <li><a href="Windows.html">Windows</a></li>
                 <li><a href="VisualStudio.html" class="sub-link">↳ Visual Studio</a></li>
                 <li><a href="WSL.html" class="sub-link">↳ WSL</a></li>
             </ul>
@@ -94,22 +125,39 @@
 
         <!-- HØJRE SIDE: FORSIDENS INDHOLD -->
         <main class="content">
-            <h1>Windows</h1>
-            <p>Noter og guides til Windows som udviklingsmiljø — fra grundlæggende ting til værktøjer, der bygger bro til Linux.</p>
+            <h1>Shell Learning</h1>
+            <p>Shellen (fx <code>bash</code>) er selve kommandofortolkeren — programmet der læser det, du skriver, og udfører det. At forstå shellen handler ikke kun om at kende enkelte kommandoer, men om at forstå de byggeklodser, der lader dig kombinere dem.</p>
 
             <div class="callout">
-                <strong>💡 Tip:</strong> Se underemnet <a href="WSL.html">WSL</a> i sidebaren for noter om at køre Linux direkte på Windows.
+                <strong>💡 Tip:</strong> Kombinér de her byggeklodser — de bliver først virkelig nyttige, når du sætter flere sammen, fx en pipe efterfulgt af en omdirigering.
             </div>
 
-            <h2>Under-emner</h2>
+            <h2>Shell-byggeklodser</h2>
+            <ul class="command-list">
+                <li><code>|</code> (pipe) — Sender output fra én kommando ind som input til den næste, fx <code>cat fil.txt | grep "fejl"</code>.</li>
+                <li><code>&gt;</code> og <code>&gt;&gt;</code> — Omdirigerer output til en fil; <code>&gt;</code> overskriver, <code>&gt;&gt;</code> tilføjer i slutningen.</li>
+                <li><code>&lt;</code> — Omdirigerer en fils indhold ind som input til en kommando.</li>
+                <li><code>$VARIABEL</code> / <code>export</code> — Miljøvariabler gemmer værdier (fx stier), som både shellen selv og programmer startet fra den kan læse.</li>
+                <li><code>*</code>, <code>?</code>, <code>[]</code> (globbing) — Wildcards der matcher filnavne, fx <code>*.txt</code> matcher alle tekstfiler i mappen.</li>
+                <li><code>$(kommando)</code> — Kommando-substitution: kører en kommando og indsætter dens output som tekst et andet sted.</li>
+                <li><code>&</code>, <code>jobs</code>, <code>fg</code>, <code>bg</code>, <code>Ctrl+Z</code> — Jobstyring: kør processer i baggrunden og skift mellem dem.</li>
+                <li><code>#!/bin/bash</code> — Shebang-linjen øverst i et script, der fortæller systemet hvilken fortolker scriptet skal køres med.</li>
+                <li><code>alias</code> — Laver et kortere navn for en lang kommando, fx <code>alias ll='ls -la'</code>.</li>
+                <li><code>history</code>, <code>↑</code>, <code>Ctrl+R</code> — Genkald og søg i tidligere kørte kommandoer.</li>
+            </ul>
+            <div class="reference">
+                📖 <strong>Kilde:</strong> The Linux Command Line — kapitel ___, s. ___ <em>(udfyld selv)</em>
+            </div>
+
+            <h2>Hurtige genveje</h2>
             <div class="grid-links">
-                <a href="WSL.html" class="card">
-                    <h3>WSL →</h3>
-                    <p>Sådan installeres og bruges Windows Subsystem for Linux.</p>
-                </a>
                 <a href="Ubuntu.html" class="card">
                     <h3>Ubuntu →</h3>
-                    <p>10 grundlæggende Linux-kommandoer, alle bør kende.</p>
+                    <p>Tilbage til de grundlæggende Linux-kommandoer.</p>
+                </a>
+                <a href="EnvironmentConfiguration.html" class="card">
+                    <h3>Environment Configuration →</h3>
+                    <p>Konfigurationsfiler og miljøvariabler.</p>
                 </a>
             </div>
         </main>

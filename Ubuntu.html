@@ -2,7 +2,7 @@
 <html lang="da">
 <head>
     <meta charset="UTF-8">
-    <title>Min Wiki med Sidebar</title>
+    <title>Ubuntu</title>
     <style>
         /* Grundlæggende design og nulstilling */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -107,6 +107,9 @@
                 <li><a href="CSS-Styling.html">CSS Styling</a></li>
                 <li><a href="Ubuntu.html" style="background: #f0f4f8; color: #0066cc; font-weight: bold;">Ubuntu</a></li>
                 <li><a href="Rider.html" class="sub-link">↳ JetBrains Rider</a></li>
+                <li><a href="ShellLearning.html" class="sub-link">↳ Shell Learning</a></li>
+                <li><a href="EnvironmentConfiguration.html" class="sub-link">↳ Environment Configuration</a></li>
+                <li><a href="HurtigeGenveje.html" class="sub-link">↳ Hurtige Genveje</a></li>
                 <li><a href="Python.html">Python</a></li>
                 <li><a href="Windows.html">Windows</a></li>
                 <li><a href="VisualStudio.html" class="sub-link">↳ Visual Studio</a></li>
@@ -146,48 +149,23 @@
                 📖 <strong>Kilde:</strong> The Linux Command Line — kapitel ___, s. ___ <em>(udfyld selv)</em>
             </div>
 
-            <h2>Shell Learning</h2>
-            <p>Shellen (fx <code>bash</code>) er selve kommandofortolkeren — programmet der læser det, du skriver, og udfører det. At forstå shellen handler ikke kun om at kende enkelte kommandoer, men om at forstå de byggeklodser, der lader dig kombinere dem.</p>
-            <ul class="command-list">
-                <li><code>|</code> (pipe) — Sender output fra én kommando ind som input til den næste, fx <code>cat fil.txt | grep "fejl"</code>.</li>
-                <li><code>&gt;</code> og <code>&gt;&gt;</code> — Omdirigerer output til en fil; <code>&gt;</code> overskriver, <code>&gt;&gt;</code> tilføjer i slutningen.</li>
-                <li><code>&lt;</code> — Omdirigerer en fils indhold ind som input til en kommando.</li>
-                <li><code>$VARIABEL</code> / <code>export</code> — Miljøvariabler gemmer værdier (fx stier), som både shellen selv og programmer startet fra den kan læse.</li>
-                <li><code>*</code>, <code>?</code>, <code>[]</code> (globbing) — Wildcards der matcher filnavne, fx <code>*.txt</code> matcher alle tekstfiler i mappen.</li>
-                <li><code>$(kommando)</code> — Kommando-substitution: kører en kommando og indsætter dens output som tekst et andet sted.</li>
-                <li><code>&</code>, <code>jobs</code>, <code>fg</code>, <code>bg</code>, <code>Ctrl+Z</code> — Jobstyring: kør processer i baggrunden og skift mellem dem.</li>
-                <li><code>#!/bin/bash</code> — Shebang-linjen øverst i et script, der fortæller systemet hvilken fortolker scriptet skal køres med.</li>
-                <li><code>alias</code> — Laver et kortere navn for en lang kommando, fx <code>alias ll='ls -la'</code>.</li>
-                <li><code>history</code>, <code>↑</code>, <code>Ctrl+R</code> — Genkald og søg i tidligere kørte kommandoer.</li>
-            </ul>
-            <div class="reference">
-                📖 <strong>Kilde:</strong> The Linux Command Line — kapitel ___, s. ___ <em>(udfyld selv)</em>
-            </div>
-
-            <h2>Environment Configuration</h2>
-            <p>Ubuntu (og Linux generelt) lader dig tilpasse, hvordan shellen og dit miljø opfører sig, via en række konfigurationsfiler, der bliver læst automatisk, når en ny terminal eller session startes.</p>
-            <ul class="command-list">
-                <li><code>~/.bashrc</code> — Køres ved hver ny interaktiv terminal; her sættes typisk aliases, prompt-udseende og shell-specifikke indstillinger.</li>
-                <li><code>~/.profile</code> / <code>~/.bash_profile</code> — Køres ved login; bruges ofte til at sætte miljøvariabler, der skal gælde for hele sessionen (ikke kun terminalen).</li>
-                <li><code>$PATH</code> — Miljøvariabel med en liste af mapper, som shellen leder igennem for at finde det program, du beder den køre.</li>
-                <li><code>export VARIABEL=værdi</code> — Gør en variabel synlig for programmer startet fra shellen, ikke kun shellen selv.</li>
-                <li><code>PS1</code> — Miljøvariabel der styrer, hvordan selve kommandoprompten ser ud (fx farver, brugernavn, mappe).</li>
-                <li><code>source ~/.bashrc</code> — Genindlæser en konfigurationsfil i den aktuelle terminal, uden at man behøver åbne en ny.</li>
-                <li><code>dotfiles</code> — Fællesbetegnelse for skjulte konfigurationsfiler (dem der starter med <code>.</code>), som <code>.bashrc</code> og <code>.gitconfig</code>.</li>
-            </ul>
-            <div class="reference">
-                📖 <strong>Kilde:</strong> The Linux Command Line — kapitel ___, s. ___ <em>(udfyld selv)</em>
-            </div>
-
             <h2>Hurtige genveje</h2>
             <div class="grid-links">
-                <a href="HTML-Guides.html" class="card">
-                    <h3>HTML Guides →</h3>
-                    <p>Lær det grundlæggende om tags, elementer og struktur.</p>
+                <a href="ShellLearning.html" class="card">
+                    <h3>Shell Learning →</h3>
+                    <p>Pipes, redirection, jobstyring og andre shell-byggeklodser.</p>
                 </a>
-                <a href="Projekter.html" class="card">
-                    <h3>Projekter →</h3>
-                    <p>Oversigt over igangværende og afsluttede opgaver.</p>
+                <a href="EnvironmentConfiguration.html" class="card">
+                    <h3>Environment Configuration →</h3>
+                    <p>Konfigurationsfiler og miljøvariabler.</p>
+                </a>
+                <a href="HurtigeGenveje.html" class="card">
+                    <h3>Hurtige Genveje →</h3>
+                    <p>Tastatur- og terminal-genveje der sparer dig for tastetryk.</p>
+                </a>
+                <a href="Rider.html" class="card">
+                    <h3>JetBrains Rider →</h3>
+                    <p>Cross-platform IDE til .NET, ofte brugt på Linux.</p>
                 </a>
             </div>
         </main>
